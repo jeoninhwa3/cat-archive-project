@@ -1,63 +1,47 @@
+import '../index.css';
 import { useState } from 'react';
+import supabase from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function App() {
+function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
   };
-
-  const handlePasswordConfirmChange = (event) => {
-    setPasswordConfirm(event.target.value);
+  const signInUser = async (e) => {
+    e.preventDefault();
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    console.log('signin: ', { data, error });
+    setUser(data.user);
   };
+  if (user) {
+    navigate('/');
+  }
+  if (!user) {
+    return (
+      <form>
+        <input type="text" placeholder="이메일" value={email} onChange={onChangeEmail} />
+        <input type="password" placeholder="비밀번호" value={password} onChange={onChangePassword} />
+        <button onClick={signInUser}>로그인</button>
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!email.trim()) {
-      alert('이메일을 입력해 주세요.');
-      return;
-    }
-
-    if (!password.trim()) {
-      alert('비밀번호를 입력해 주세요.');
-      return;
-    }
-
-    if (password.length < 8) {
-      alert('8자 이상 입력해 주세요.');
-      return;
-    }
-
-    if (password !== passwordConfirm) {
-      alert('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-    alert(`회원가입 성공! 당신의 이메일은 ${email} & 비밀번호는 ${password}입니다.`);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">이메일:</label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} />
-      </div>
-      <div>
-        <label htmlFor="password">비밀번호:</label>
-        <input type="password" id="password" value={password} onChange={handlePasswordChange} />
-      </div>
-      <div>
-        <label htmlFor="passwordConfirm">비밀번호 확인:</label>
-        <input type="password" id="passwordConfirm" value={passwordConfirm} onChange={handlePasswordConfirmChange} />
-      </div>
-      <button type="submit">회원가입</button>
-    </form>
-  );
+        <div>
+          <Link to="/Register">새 계정 만들기</Link>
+        </div>
+      </form>
+    );
+  }
 }
 
-export default App;
+export default LoginPage;

@@ -1,0 +1,99 @@
+import '../index.css';
+import { useState } from 'react';
+import supabase from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+function RegisterPage() {
+  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handleUserNameChange = (event) => {
+    setUserName(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handlePasswordConfirmChange = (event) => {
+    setPasswordConfirm(event.target.value);
+  };
+
+  const signUpNewUser = async () => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      userName,
+      password
+    });
+    console.log('signup: ', { data, error });
+    setUser(data.user);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!email.trim()) {
+      alert('이메일을 다시 입력해 주세요.');
+      return;
+    }
+
+    if (!userName.trim()) {
+      alert('이름을 입력해 주세요.');
+      return;
+    }
+    if (!password.trim()) {
+      alert('비밀번호를 입력해 주세요.');
+      return;
+    }
+
+    if (password.length < 8) {
+      alert('8자 이상 입력해 주세요.');
+      return;
+    }
+
+    if (password !== passwordConfirm) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+    signUpNewUser();
+  };
+
+  if (user) {
+    navigate('/');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
+      </div>
+      <div>
+        <input type="username" placeholder="이름" value={userName} onChange={handleUserNameChange} />
+      </div>
+      <div>
+        <input type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
+      </div>
+      <div>
+        <input
+          type="password"
+          placeholder="비밀번호 확인"
+          value={passwordConfirm}
+          onChange={handlePasswordConfirmChange}
+        />
+      </div>
+      <button type="submit">회원가입</button>
+      <div>
+        계정이 있으신가요?
+        <Link style={{ textDecoration: 'none', color: 'blue' }} to="/logIn" color="blue">
+          로그인
+        </Link>
+      </div>
+    </form>
+  );
+}
+
+export default RegisterPage;

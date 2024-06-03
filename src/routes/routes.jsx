@@ -5,6 +5,7 @@ import CreateNewPostPage from '../pages/CreateNewPostPage';
 import LogInPage from '../pages/LogInPage';
 import PostDetailPage from '../pages/PostDetailPage';
 import DefaultLayout from '../layout/DefaultLayout';
+import RegisterPage from '../pages/RegisterPage';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: '/logIn',
         element: <LogInPage></LogInPage>
+      },
+      {
+        path: '/register',
+        element: <RegisterPage></RegisterPage>
       },
       {
         path: '/myPage/:user_id',
