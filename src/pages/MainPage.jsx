@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
 const MainPage = () => {
+  // 임시 데이터 설정해둠
+  const [USER_ID, IS_LOGGED_IN] = ['0xABCDE', true];
   return (
     <div>
       <h1>MainPage</h1>
