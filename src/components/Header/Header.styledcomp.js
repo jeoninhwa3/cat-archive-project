@@ -13,8 +13,10 @@ export const StyledHeader = styled.header`
   margin-bottom: 20px;
   position: fixed;
   top: 0;
-  width: 90%;
+  left: 0;
+  right: 0;
   z-index: 100;
+  overflow: overlay;
 `;
 
 export const LogoContainer = styled.div`
