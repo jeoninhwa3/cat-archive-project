@@ -10,15 +10,14 @@ function LoginPage() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-  const signInUser = async (e) => {
-    e.preventDefault();
+  const signInUser = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
@@ -26,22 +25,55 @@ function LoginPage() {
     console.log('signin: ', { data, error });
     setUser(data.user);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!email.trim()) {
+      alert('이메일을 다시 입력해 주세요.');
+      return;
+    }
+    if (!password.trim()) {
+      alert('비밀번호를 입력해 주세요.');
+      return;
+    }
+    signInUser();
+  };
+
   if (user) {
     navigate('/');
   }
-  if (!user) {
-    return (
-      <form>
-        <input type="text" placeholder="이메일" value={email} onChange={onChangeEmail} />
-        <input type="password" placeholder="비밀번호" value={password} onChange={onChangePassword} />
-        <button onClick={signInUser}>로그인</button>
-
+  return (
+    <form onSubmit={handleSubmit} className="logincard">
+      <div className="loginbox">
+        <h1>갓생챌린지</h1>
         <div>
-          <Link to="/Register">새 계정 만들기</Link>
+          <input type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
         </div>
-      </form>
-    );
-  }
+        <div>
+          <input
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+        <div>
+          <button onClick={signInUser} disabled={!email || !password}>
+            로그인
+          </button>
+        </div>
+        <div>―――――― 또는 ――――――</div>
+        <h2 className="githublogin">깃헙으로 로그인</h2>
+        <h3 className="googlelogin">구글으로 로그인</h3>
+        <h4>비밀번호를 잊으셧나요?</h4>
+      </div>
+      <div className="gotoregister">
+        <Link className="gotologin" to="/Register">
+          새 계정 만들기
+        </Link>
+      </div>
+    </form>
+  );
 }
 
 export default LoginPage;

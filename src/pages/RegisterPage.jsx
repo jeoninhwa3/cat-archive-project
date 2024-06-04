@@ -34,6 +34,7 @@ function RegisterPage() {
     console.log('signup: ', { data, error });
     setUser(data.user);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!email.trim()) {
@@ -67,28 +68,36 @@ function RegisterPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
+    <form onSubmit={handleSubmit} className="logincard">
+      <div className="loginbox">
+        <h1>갓생챌린지</h1>
+        <h2 className="githublogin">깃헙으로 로그인</h2>
+        <h3 className="googlelogin">구글으로 로그인</h3>
+        <div className="orchoose">―――――― 또는 ――――――</div>
+
+        <div>
+          <input type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
+        </div>
+        <div>
+          <input type="username" placeholder="이름" value={userName} onChange={handleUserNameChange} />
+        </div>
+        <div>
+          <input type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="비밀번호 확인"
+            value={passwordConfirm}
+            onChange={handlePasswordConfirmChange}
+          />
+        </div>
+        <button type="submit">가입</button>
       </div>
-      <div>
-        <input type="username" placeholder="이름" value={userName} onChange={handleUserNameChange} />
-      </div>
-      <div>
-        <input type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
-      </div>
-      <div>
-        <input
-          type="password"
-          placeholder="비밀번호 확인"
-          value={passwordConfirm}
-          onChange={handlePasswordConfirmChange}
-        />
-      </div>
-      <button type="submit">회원가입</button>
-      <div>
+
+      <div className="gotoregister">
         계정이 있으신가요?
-        <Link style={{ textDecoration: 'none', color: 'blue' }} to="/logIn" color="blue">
+        <Link className="gotologin" to="/logIn" color="blue">
           로그인
         </Link>
       </div>
