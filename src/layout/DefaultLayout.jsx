@@ -1,14 +1,17 @@
 import { Outlet } from 'react-router-dom';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
+import { Body } from '../components/Body/Body.styledcomp';
 
 const DefaultLayout = () => {
   return (
-    <div>
-      <h1>Header</h1>
-      <br></br>
-      <Outlet></Outlet>
-      <br></br>
-      <h1>Footer</h1>
-    </div>
+    <>
+      <Header></Header>
+      <Body>
+        <Outlet></Outlet>
+      </Body>
+      <Footer></Footer>
+    </>
   );
 };
 
