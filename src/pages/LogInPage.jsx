@@ -3,6 +3,7 @@ import { useState } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -39,9 +40,12 @@ function LoginPage() {
     signInUser();
   };
 
-  if (user) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
+
   return (
     <form onSubmit={handleSubmit} className="logincard">
       <div className="loginbox">

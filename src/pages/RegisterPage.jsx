@@ -3,10 +3,11 @@ import { useState } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
-  const [userName, setUserName] = useState('');
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [user, setUser] = useState(null);
@@ -28,10 +29,18 @@ function RegisterPage() {
   const signUpNewUser = async () => {
     const { data, error } = await supabase.auth.signUp({
       email,
-      userName,
+      username,
       password
     });
+
+    const { data: usersData, error: userInsertError } = await supabase.from('users').insert({
+      email,
+      username,
+      password
+    });
+
     console.log('signup: ', { data, error });
+    console.log('usersdata: ', { usersData, userInsertError });
     setUser(data.user);
   };
 
@@ -42,7 +51,7 @@ function RegisterPage() {
       return;
     }
 
-    if (!userName.trim()) {
+    if (!username.trim()) {
       alert('이름을 입력해 주세요.');
       return;
     }
@@ -63,9 +72,11 @@ function RegisterPage() {
     signUpNewUser();
   };
 
-  if (user) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <form onSubmit={handleSubmit} className="logincard">
@@ -79,7 +90,7 @@ function RegisterPage() {
           <input type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
         </div>
         <div>
-          <input type="username" placeholder="이름" value={userName} onChange={handleUserNameChange} />
+          <input type="username" placeholder="이름" value={username} onChange={handleUserNameChange} />
         </div>
         <div>
           <input type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
