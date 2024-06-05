@@ -35,7 +35,6 @@ const UserProfilePage = () => {
       const userData = await getUser();
       if (userData) {
         setUser(userData);
-        console.log(user);
       } else {
         console.log('Error user');
       }

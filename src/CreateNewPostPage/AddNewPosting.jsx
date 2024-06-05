@@ -98,6 +98,7 @@ const AddNewPosting = () => {
     const { data } = await supabase.storage.from('url').upload(`url_${Date.now()}.png`, file);
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
   };
+  console.log(url);
   return (
     <Container>
       <Header>CreateNewPostPage</Header>

@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import supabase from '../../supabaseClient';
+// import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 // styled-components
-const StForm = styled.form`
+const StProfileBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +17,9 @@ const StForm = styled.form`
 const StImg = styled.img`
   display: block;
   width: 150px;
+  height: 150px;
   border-radius: 50%;
+  object-fit: cover;
 `;
 const StButton = styled.button`
   font-size: 15px;
@@ -23,37 +27,77 @@ const StButton = styled.button`
   padding: 3px 10px 5px;
   border-radius: 7px;
 `;
+const StInput = styled.input`
+  width: 0;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+`;
 
-const ProfileForm = ({ user }) => {
-  const [previewUrl, setPreviewUrl] = useState([
+const ProfileForm = () => {
+  // const dispatch = useDispatch();
+  const { id } = useParams();
+  // const [user, setUser] = useState();
+  const [url, setUrl] = useState(
     'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg'
-  ]);
-  const [profileUrl, setProfileUrl] = useState(null);
+  );
 
-  useEffect(() => {
-    checkProfile();
-  }, []);
+  // const getUsers = async () => {
+  //   const { data: users, error } = await supabase.from('users').select().eq('id', id);
+  //   setUser(users);
+  //   if (error) {
+  //     console.log(error);
+  //     return;
+  //   }
+  //   return users;
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  // console.log(user.email);
-  function checkProfile() {
-    const { data } = supabase.storage.from('users').getPublicUrl('default-profile.jpg');
+  // useEffect(() => {
+  //   getUsers().then((user) => dispatch(setUser(user)));
+  // }, []);
 
-    setProfileUrl(data.publicUrl);
-    console.log(data.publicUrl);
+  async function handleFileInputChange(files) {
+    const [file] = files;
+
+    if (!file) {
+      return;
+    }
+
+    const { data } = await supabase.storage.from('users').upload(`avatar_${Date.now()}.png`, file);
+
+    setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/${data.path}`);
   }
+
+  // 프로필 사진 변경
+  const addHandler = async () => {
+    const { data, error } = await supabase
+      .from('user')
+      .update({
+        url
+      })
+      .eq('id', id)
+      .select();
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(data);
+      alert('글 수정 완료');
+    }
+  };
+  console.log(url);
   return (
-    <>
-      {/* <p>{user.email}님 안녕하세요!</p> */}
-      <StForm onSubmit={handleSubmit}>
+    <StProfileBox>
+      <StImg src={url} alt="미리보기 이미지" />
+      {/* <p style={{ color: '#fff' }}>{user.email}님 안녕하세요!</p> */}
+      <StButton onClick={addHandler}>프로필 수정하기</StButton>
+      <form>
+        {/* <input type="text" placeholder="이름" /> */}
         <label>
-          <StImg src={previewUrl} alt="미리보기 이미지" />
+          프로필 사진 변경
+          <StInput type="file" onChange={(e) => handleFileInputChange(e.target.files)} />
         </label>
-        <StButton type="submit">프로필 수정하기</StButton>
-      </StForm>
-    </>
+      </form>
+    </StProfileBox>
   );
 };
 

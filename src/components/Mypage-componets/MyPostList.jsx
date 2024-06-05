@@ -32,11 +32,22 @@ const StTit = styled.h2`
   font-size: 30px;
   font-weight: 700;
 `;
+const StBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px 0px;
+`;
 const StTitle = styled.h3`
   font-size: 16px;
   font-weight: 700;
-  padding: 10px 0;
-  text-align: center;
+`;
+const StButton = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
 `;
 
 const MyPostList = ({ posts }) => {
@@ -49,15 +60,30 @@ const MyPostList = ({ posts }) => {
         {posts &&
           posts.map((el, idx) => {
             return (
-              <StLi
-                key={idx}
-                onClick={() => {
-                  navigate(`/PostUpdate/${el.id}`);
-                }}
-              >
-                <StImg src={el.url} alt="" />
-                <StTitle>{el.title}</StTitle>
-                {/* <p>{user.id}</p> */}
+              <StLi key={idx}>
+                <StImg
+                  src={el.url}
+                  onClick={() => {
+                    navigate(`/post/${el.id}`);
+                  }}
+                />
+
+                <StBox>
+                  <StTitle
+                    onClick={() => {
+                      navigate(`/post/${el.id}`);
+                    }}
+                  >
+                    {el.title}
+                  </StTitle>
+                  <StButton
+                    onClick={() => {
+                      navigate(`/PostUpdate/${el.id}`);
+                    }}
+                  >
+                    <span className="material-symbols-outlined">settings</span>
+                  </StButton>
+                </StBox>
               </StLi>
             );
           })}
