@@ -1,20 +1,18 @@
-import { useState } from 'react';
-import supabase from '../supabaseClient';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import supabase from '../supabaseClient';
 
 import {
-  LoginCard,
-  LoginBox,
+  MainStation,
+  UpperBox,
   MainLogo,
   InnerText,
   SignButton,
   H2,
   H3,
   H4,
-  Gotoregister,
-  Gotologin
+  UnderBox,
+  LinkText
 } from '../components/loginstyled.jsx';
 
 function LoginPage() {
@@ -59,22 +57,18 @@ function LoginPage() {
   }, [user]);
 
   return (
-    <LoginCard onSubmit={handleSubmit}>
-      <LoginBox>
+    <MainStation onSubmit={handleSubmit}>
+      <UpperBox>
         <MainLogo>갓생챌린지</MainLogo>
 
-        <InnerText>
-          <input type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
-        </InnerText>
+        <InnerText type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
 
-        <InnerText>
-          <input
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </InnerText>
+        <InnerText
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          value={password}
+          onChange={handlePasswordChange}
+        />
 
         <SignButton onClick={signInUser} disabled={!email || !password}>
           로그인
@@ -87,14 +81,12 @@ function LoginPage() {
         <H3>구글으로 로그인</H3>
 
         <H4>비밀번호를 잊으셧나요?</H4>
-      </LoginBox>
+      </UpperBox>
 
-      <Gotoregister>
-        <Link to="/Register">
-          <Gotologin>새 계정 만들기</Gotologin>
-        </Link>
-      </Gotoregister>
-    </LoginCard>
+      <UnderBox>
+        <LinkText to="/Register">새 계정 만들기</LinkText>
+      </UnderBox>
+    </MainStation>
   );
 }
 

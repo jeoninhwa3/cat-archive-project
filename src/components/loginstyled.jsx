@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 /* Login Register css (강윤서) */
 
-export const LoginCard = styled.div`
+export const MainStation = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
 `;
-export const LoginBox = styled.div`
+export const UpperBox = styled.div`
   width: 350px;
   margin: 4% auto auto;
   border: 1px solid lightgrey;
@@ -21,7 +22,7 @@ export const MainLogo = styled.div`
   color: rgb(75, 146, 155);
 `;
 
-export const InnerText = styled.div`
+export const InnerText = styled.input`
   width: 70%;
   margin-bottom: 5px;
   height: 35px;
@@ -29,7 +30,7 @@ export const InnerText = styled.div`
   border: 1px solid lightgrey;
 `;
 
-export const SignButton = styled.div`
+export const SignButton = styled.button`
   margin-top: 10px;
   margin-bottom: 40px;
   width: 71%;
@@ -67,17 +68,21 @@ export const OrChoose = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Gotoregister = styled.div`
+export const UnderBox = styled.div`
   width: 350px;
   height: 70px;
   line-height: 70px;
   margin: 20px auto;
   border: 1px solid lightgrey;
   text-align: center;
-  font-size: 15px;
+  text-decoration: none;
 `;
 
-export const Gotologin = styled.div`
+export const LinkText = styled(Link)`
   text-decoration: none;
   color: rgb(30, 144, 255);
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline; // 마우스를 올렸을 때 밑줄 추가
+  }
 `;

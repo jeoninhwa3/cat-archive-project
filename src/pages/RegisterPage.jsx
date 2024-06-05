@@ -1,9 +1,19 @@
-import '../index.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+
+import {
+  MainStation,
+  UpperBox,
+  MainLogo,
+  InnerText,
+  SignButton,
+  H2,
+  H3,
+  OrChoose,
+  UnderBox,
+  LinkText
+} from '../components/loginstyled.jsx';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -81,40 +91,34 @@ function RegisterPage() {
   }, [user]);
 
   return (
-    <form onSubmit={handleSubmit} className="logincard">
-      <div className="loginbox">
-        <h1>갓생챌린지</h1>
-        <h2 className="githublogin">깃헙으로 로그인</h2>
-        <h3 className="googlelogin">구글으로 로그인</h3>
-        <div className="orchoose">―――――― 또는 ――――――</div>
+    <MainStation onSubmit={handleSubmit}>
+      <UpperBox>
+        <MainLogo>갓생챌린지</MainLogo>
+        <H2>깃헙으로 로그인</H2>
+        <H3>구글으로 로그인</H3>
+        <OrChoose>―――――― 또는 ――――――</OrChoose>
 
-        <div>
-          <input type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
-        </div>
-        <div>
-          <input type="name" placeholder="이름" value={name} onChange={handleNameChange} />
-        </div>
-        <div>
-          <input type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="비밀번호 확인"
-            value={passwordConfirm}
-            onChange={handlePasswordConfirmChange}
-          />
-        </div>
-        <button type="submit">가입</button>
-      </div>
+        <InnerText type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
 
-      <div className="gotoregister">
+        <InnerText type="name" placeholder="이름" value={name} onChange={handleNameChange} />
+
+        <InnerText type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
+
+        <InnerText
+          type="password"
+          placeholder="비밀번호 확인"
+          value={passwordConfirm}
+          onChange={handlePasswordConfirmChange}
+        />
+
+        <SignButton type="submit">가입</SignButton>
+      </UpperBox>
+
+      <UnderBox>
         계정이 있으신가요?
-        <Link className="gotologin" to="/logIn" color="blue">
-          로그인
-        </Link>
-      </div>
-    </form>
+        <LinkText to="/logIn">로그인</LinkText>
+      </UnderBox>
+    </MainStation>
   );
 }
 
