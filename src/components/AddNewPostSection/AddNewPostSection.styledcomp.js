@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AddNewPostBtnContainer = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
 
@@ -16,7 +17,7 @@ export const AddNewPostBtn = styled.div`
   justify-content: center;
   align-items: center;
   height: 60%;
-  padding: 0px 120px;
+  padding: 0px 240px;
   border-radius: 15px;
   border: 3pt dashed;
 
