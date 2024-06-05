@@ -3,26 +3,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import supabase from '../supabaseClient'; // supabase 임포트
 
-const StForm = styled.form`
-  height: 50px;
-  display: flex;
-  gap: 2px;
-  input {
-    width: 70%;
-    height: 25px;
-  }
-  button {
-    height: 30px;
-  }
-`;
-
 const CommentsForm = ({ sessionId, postId }) => {
   const [inputComments, setInputComments] = useState('');
 
   // 댓글 생성(C) 댓글테이블에 추가
   const createComment = async (e) => {
-    // 이벤트 객체 e 추가
-    // e.preventDefault();
+    e.preventDefault();
     // 기본 제출 동작 막기
 
     //유저 이름이랑 프로필 이미지 찾기
@@ -47,10 +33,10 @@ const CommentsForm = ({ sessionId, postId }) => {
 
   return (
     <>
-      <StForm onSubmit={createComment}>
+      <form onSubmit={createComment}>
         <input type="text" value={inputComments} onChange={(e) => setInputComments(e.target.value)} />
         <button type="submit">댓글등록</button>
-      </StForm>
+      </form>
     </>
   );
 };
