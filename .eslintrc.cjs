@@ -14,6 +14,9 @@ module.exports = {
   rules: {
     'react-hooks/exhaustive-deps': 'off',
     'react/jsx-no-target-blank': 'off',
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]
+
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'react/prop-types': 'off'
+
   }
 };
