@@ -22,6 +22,7 @@ const Header = () => {
     e.preventDefault();
     const { data, error } = await supabase.auth.signOut();
     console.log('signout: ', { data, error }); // data는 딱히 필요없을 듯
+    navigate('/login');
     setUser(null);
   };
   console.log(user);

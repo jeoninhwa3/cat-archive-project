@@ -1,5 +1,5 @@
-import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import supabase from '../supabaseClient';
 
 import {
@@ -13,7 +13,7 @@ import {
   OrChoose,
   UnderBox,
   LinkText
-} from '../detail-components/LoginStyled';
+} from '../components/Login-componets/LoginStyled';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -21,6 +21,7 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -52,7 +53,6 @@ function RegisterPage() {
 
     console.log('signup: ', { data, error });
     console.log('usersdata: ', { usersData, userInsertError });
-    console.log(user);
     setUser(data.user);
   };
 
@@ -94,6 +94,11 @@ function RegisterPage() {
     }
     signUpNewUser();
   };
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <MainStation onSubmit={handleSubmit}>
