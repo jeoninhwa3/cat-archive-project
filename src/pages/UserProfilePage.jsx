@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const StContainer = styled.div`
   display: flex;
   min-width: 1200px;
-  padding: 100px 120px;
+  padding: 80px 120px;
 `;
 
 const UserProfilePage = () => {
@@ -44,7 +44,7 @@ const UserProfilePage = () => {
   }, []);
   return (
     <StContainer>
-      <ProfileForm />
+      <ProfileForm user={user} />
       <MyPostList user={user} posts={posts} />
     </StContainer>
   );

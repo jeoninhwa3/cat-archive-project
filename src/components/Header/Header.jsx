@@ -19,7 +19,6 @@ const Header = () => {
     setUserId(getData.session.user.id);
   }
   getPosts();
-  console.log(userId);
 
   const handleHeaderBtnClick = (event) => {
     if (event.target.id === 'to-profile-btn') {
@@ -33,7 +32,6 @@ const Header = () => {
     navigate('/login');
     setUser(null);
   };
-  console.log(user);
 
   return (
     <StyledHeader>

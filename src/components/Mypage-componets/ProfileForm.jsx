@@ -1,4 +1,3 @@
-import { getUser } from '../../api/auth';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import supabase from '../../supabaseClient';
@@ -25,39 +24,26 @@ const StButton = styled.button`
   border-radius: 7px;
 `;
 
-const ProfileForm = () => {
+const ProfileForm = ({ user }) => {
   const [previewUrl, setPreviewUrl] = useState([
     'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg'
   ]);
-  const [user, setUser] = useState(null);
   const [profileUrl, setProfileUrl] = useState(null);
-  // console.log(user);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const userData = await getUser();
-      if (userData) {
-        setUser(userData);
-      } else {
-        console.log('Error user');
-      }
-    };
-
-    fetchUser();
     checkProfile();
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
+  // console.log(user.email);
   function checkProfile() {
     const { data } = supabase.storage.from('users').getPublicUrl('default-profile.jpg');
 
     setProfileUrl(data.publicUrl);
     console.log(data.publicUrl);
   }
-
   return (
     <>
       {/* <p>{user.email}님 안녕하세요!</p> */}

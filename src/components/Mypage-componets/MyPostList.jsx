@@ -12,8 +12,10 @@ const StUl = styled.ul`
 `;
 const StLi = styled.li`
   cursor: pointer;
+  height: 210px;
   border-radius: 20px;
-  box-shadow: 10px 10px 20px #eee;
+  background-color: #fff;
+  box-shadow: 2px 3px 10px #eee;
 `;
 const StImg = styled.img`
   width: 300px;
