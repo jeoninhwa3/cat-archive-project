@@ -1,9 +1,14 @@
+
 import '../index.css';
 import { useState } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+
+const LogInPage = async () => {
+  <></>;
+};
 
 function LoginPage() {
   const [email, setEmail] = useState('');
