@@ -34,6 +34,9 @@ function LoginPage() {
       password
     });
     console.log('signin: ', { data, error });
+    if (error) {
+      alert('이메일과 비밀번호를 다시 입력해 주세요.');
+    }
     setUser(data.user);
   };
 
@@ -47,7 +50,6 @@ function LoginPage() {
       alert('비밀번호를 입력해 주세요.');
       return;
     }
-    signInUser();
   };
 
   useEffect(() => {
@@ -61,11 +63,11 @@ function LoginPage() {
       <UpperBox>
         <MainLogo>갓생챌린지</MainLogo>
 
-        <InnerText type="email" placeholder="  이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
+        <InnerText type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
 
         <InnerText
           type="password"
-          placeholder="  비밀번호를 입력해주세요"
+          placeholder="비밀번호를 입력해주세요"
           value={password}
           onChange={handlePasswordChange}
         />

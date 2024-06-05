@@ -81,7 +81,6 @@ function RegisterPage() {
       alert('비밀번호가 일치하지 않습니다.');
       return;
     }
-    signUpNewUser();
   };
   useEffect(() => {
     if (user) {
@@ -97,11 +96,11 @@ function RegisterPage() {
         <H3>구글으로 로그인</H3>
         <OrChoose>―――――― 또는 ――――――</OrChoose>
 
-        <InnerText type="email" placeholder="  이메일" value={email} onChange={handleEmailChange} />
+        <InnerText type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
 
-        <InnerText type="name" placeholder="  이름" value={name} onChange={handleNameChange} />
+        <InnerText type="name" placeholder="이름" value={name} onChange={handleNameChange} />
 
-        <InnerText type="password" placeholder="  비밀번호" value={password} onChange={handlePasswordChange} />
+        <InnerText type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
 
         <InnerText
           type="password"
@@ -110,7 +109,7 @@ function RegisterPage() {
           onChange={handlePasswordConfirmChange}
         />
 
-        <SignButton type="submit">가입</SignButton>
+        <SignButton onClick={signUpNewUser()}>가입</SignButton>
       </UpperBox>
 
       <UnderBox>

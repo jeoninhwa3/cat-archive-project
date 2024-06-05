@@ -57,9 +57,6 @@ const CreateNewPostPage = () => {
   console.log(setUser(data.user));
   useEffect(() => {
     const fetchData = async () => {
-      if (!user) {
-        navigate('/login');
-      }
       const { data, error } = await supabase.from('posts').select();
       if (error) {
         console.log(error);

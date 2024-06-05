@@ -27,6 +27,7 @@ export const InnerText = styled.input`
   height: 35px;
   text-align: left;
   border: 1px solid lightgrey;
+  padding-left: 17px;
 `;
 
 export const SignButton = styled.button`
