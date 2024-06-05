@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -50,11 +51,15 @@ const CreateNewPostPage = () => {
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
   const fileInputRef = useRef(null);
-
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  console.log(setUser(data.user));
   useEffect(() => {
     const fetchData = async () => {
+      if (!user) {
+        navigate('/login');
+      }
       const { data, error } = await supabase.from('posts').select();
       if (error) {
         console.log(error);
@@ -64,7 +69,7 @@ const CreateNewPostPage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [user]);
 
   const addHandler = async () => {
     const session = await supabase.auth.getSession();

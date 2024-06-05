@@ -1,5 +1,5 @@
 import React from 'react';
-import Comments from '../detail-components/Comments';
+// import Comments from '../detail-components/Comments';
 import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
