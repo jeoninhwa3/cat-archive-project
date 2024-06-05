@@ -19,20 +19,20 @@ export const PostItemsTitle = styled.h1`
 
 export const PostItemContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 10px;
-  column-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 40px;
+  column-gap: 40px;
   padding: 20px 120px;
 `;
 
 export const PostItem = styled.div`
   z-index: 1;
-  padding: 20px 0px;
+  padding: 30px 0px;
   display: flex;
   flex-direction: column;
-  background-color: blue;
+  background-color: rgb(51, 52, 59);
   color: white;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 10px;
   border-radius: 15px;
@@ -45,20 +45,44 @@ export const PostImg = styled.div`
   background-position: center;
   background-color: white;
   width: 90%;
-  height: 600px;
+  height: 400px;
 `;
 
 export const PostTextSection = styled.div`
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
+  align-items: start;
   justify-content: start;
   align-items: start;
+  width: 90%;
+  gap: 10px;
 `;
 
 export const PostTitle = styled.h1`
   color: white;
+  font-size: 1.6rem;
+  font-weight: 900;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 말줄임 적용 */
 `;
 
 export const PostContent = styled.p`
-  color: white;
+  color: #adacac;
+  font-size: 1rem;
+
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  height: 50px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+`;
+
+export const PostTime = styled.p`
+  color: #8f8f8f;
+  font-size: 0.8rem;
 `;

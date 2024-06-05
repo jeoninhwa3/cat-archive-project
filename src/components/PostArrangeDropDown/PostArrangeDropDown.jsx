@@ -28,7 +28,7 @@ function PostArrangeDropDown() {
   };
 
   const handleClickArrangeToMostLikes = () => {
-    dispatch(SET_POST_ARRANGE_TYPE({ postArrageType: 'likes' }));
+    dispatch(SET_POST_ARRANGE_TYPE({ postArrageType: 'oldest' }));
     dispatch(SET_POSTS([]));
     dispatch(SET_POSTS_COUNTER(0));
   };
@@ -36,13 +36,13 @@ function PostArrangeDropDown() {
   return (
     <PostArrangeDropDownContainer onClick={handleClickContainer}>
       <PostArrangeDropDownTitle>
-        보기 방식: {postsArrangeType === 'latest' ? '최신순' : '좋아요 많은 순'}
+        보기 방식: {postsArrangeType === 'latest' ? '최신순' : '오래된순'}
       </PostArrangeDropDownTitle>
 
       {isDropdownView && (
         <PostArrangeDropDownList>
           <PostArrangeDropDownItem onClick={handleClickArrangeToLatest}>최신순</PostArrangeDropDownItem>
-          <PostArrangeDropDownItem onClick={handleClickArrangeToMostLikes}>좋아요 많은 순</PostArrangeDropDownItem>
+          <PostArrangeDropDownItem onClick={handleClickArrangeToMostLikes}>오래된순</PostArrangeDropDownItem>
         </PostArrangeDropDownList>
       )}
     </PostArrangeDropDownContainer>
