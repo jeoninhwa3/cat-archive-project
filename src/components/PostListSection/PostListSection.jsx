@@ -9,21 +9,26 @@ import {
   PostTextSection,
   PostTitle
 } from './PostListSection.styledcomp';
+import { useNavigate } from 'react-router-dom';
 
 const PostListSection = () => {
   const [scrollLoadTargetRef, scrollLoadTargetRefInView] = useInView();
   const [posts, setPosts] = useState([]);
-
   const [postCounter, setPostCounter] = useState(0);
+  const navigate = useNavigate();
 
-  async function getPosts() {
+  const getPosts = async () => {
     const { data } = await supabase
       .from('posts')
       .select()
       .range(postCounter, postCounter + 0);
     setPostCounter(postCounter + 1);
     setPosts([...posts, ...data]);
-  }
+  };
+
+  const handleClickPostItem = (destination) => {
+    navigate(`/post/${destination}`);
+  };
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,7 +43,7 @@ const PostListSection = () => {
       <PostItemContainer>
         {posts &&
           posts.map((post) => (
-            <PostItem key={post.id}>
+            <PostItem key={post.id} onClick={handleClickPostItem(post.id)}>
               <PostImg imgUrl={post.url ? `${post.url}` : `../../assets/temp_logo.png`}></PostImg>
               <PostTextSection>
                 <PostTitle>{post.title}</PostTitle>
