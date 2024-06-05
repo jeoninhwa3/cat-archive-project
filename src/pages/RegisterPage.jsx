@@ -14,6 +14,7 @@ import {
   LinkText
 } from '../components/Login-componets/LoginStyled';
 import { useDispatch } from 'react-redux';
+import { SET_IS_LOGGED_IN } from '../redux/modules/newsFeed';
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -51,7 +52,6 @@ function RegisterPage() {
     console.log('signup: ', { data, error });
     console.log('usersdata: ', { usersData, userInsertError });
     setUser(data.user);
-    dispatch();
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -79,6 +79,7 @@ function RegisterPage() {
   };
   useEffect(() => {
     if (user) {
+      dispatch(SET_IS_LOGGED_IN(true));
       navigate('/');
     }
   }, [user]);

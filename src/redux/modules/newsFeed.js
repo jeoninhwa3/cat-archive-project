@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   postsArrangeType: 'latest',
   posts: [],
-  postsCounter: 0
+  postsCounter: 0,
+  isLoggedIn: false
 };
 
 const newsFeed = createSlice({
@@ -21,9 +22,12 @@ const newsFeed = createSlice({
     },
     SET_POSTS_COUNTER: (state, action) => {
       state.postsCounter = action.payload;
+    },
+    SET_IS_LOGGED_IN: (state, action) => {
+      state.isLoggedIn = action.payload;
     }
   }
 });
 
-export const { TEMP_REDUCER, SET_POST_ARRANGE_TYPE, SET_POSTS, COUNT_POSTS, SET_POSTS_COUNTER } = newsFeed.actions;
+export const { SET_IS_LOGGED_IN, SET_POST_ARRANGE_TYPE, SET_POSTS, COUNT_POSTS, SET_POSTS_COUNTER } = newsFeed.actions;
 export default newsFeed.reducer;
