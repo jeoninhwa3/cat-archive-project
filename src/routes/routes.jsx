@@ -7,6 +7,7 @@ import PostDetailPage from '../pages/PostDetailPage';
 import PostUpdate from '../pages/PostUpdate';
 import RegisterPage from '../pages/RegisterPage';
 import DefaultLayout from '../layout/DefaultLayout';
+import Temp from '../pages/Temp';
 
 export const unloggedInRouter = createBrowserRouter([
   {
@@ -20,6 +21,23 @@ export const unloggedInRouter = createBrowserRouter([
   {
     path: '/LogIn',
     element: <LogInPage></LogInPage>
+  },
+  {
+    path: '/myPage/:user_id',
+    element: <Temp></Temp>
+  },
+  {
+    path: '/createNewPost',
+    element: <Temp></Temp>
+  },
+
+  {
+    path: '/PostUpdate/:id',
+    element: <Temp></Temp>
+  },
+  {
+    path: '/post/:post_id',
+    element: <Temp></Temp>
   }
 ]);
 

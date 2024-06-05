@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -11,10 +12,12 @@ const Container = styled.div`
 
 const Header = styled.header`
   width: 100%;
-  background-color: #333;
+
   color: #fff;
   padding: 10px;
   margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 900;
 `;
 
 const InputField = styled.input`
@@ -112,7 +115,7 @@ const AddNewPosting = () => {
 
   return (
     <Container>
-      <Header>CreateNewPostPage</Header>
+      <Header>새 게시글 작성하기</Header>
       <InputField
         type="text"
         value={title}
