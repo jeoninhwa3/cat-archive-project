@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   max-width: 1200px;

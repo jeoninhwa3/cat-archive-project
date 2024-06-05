@@ -1,10 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import supabase from '../../supabaseClient';
+
+const fetchSessionId = async () => {
+  const {
+    data: { session }
+  } = await supabase.auth.getSession();
+  return session.user.id;
+};
 
 const initialState = {
   postsArrangeType: 'latest',
   posts: [],
   postsCounter: 0,
-  isLoggedIn: false
+  isLoggedIn: true
 };
 
 const newsFeed = createSlice({

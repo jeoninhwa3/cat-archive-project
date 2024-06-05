@@ -12,13 +12,16 @@ import { useDispatch } from 'react-redux';
 import { SET_IS_LOGGED_IN } from '../../redux/modules/newsFeed';
 
 const Header = () => {
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
 
   async function getPosts() {
-    const { data: getData, error } = await supabase.auth.getSession();
-    setUserId(getData.session.user.id);
+    const { data: getData } = await supabase.auth.getSession();
+    if (getData.session !== null) {
+      setUserId(getData.session.user.id);
+    }
   }
   getPosts();
 

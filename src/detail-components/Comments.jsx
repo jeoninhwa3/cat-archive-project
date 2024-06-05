@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from '../supabaseClient';
 import CommentsForm from './CommentsForm';
 import CommentsList from './CommentsList';
-import styled from 'styled-components';
 
 const Comments = ({ postId }) => {
   const [sessionId, setSessionId] = useState(null);
