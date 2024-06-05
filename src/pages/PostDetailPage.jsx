@@ -3,35 +3,34 @@ import Comments from '../detail-components/Comments';
 import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import logo from '../assets/temp_logo.png';
 
 const StDetail = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
-  max-width: 60vw;
+  width: 87vw;
   height: 100vh;
   margin: 0 auto;
-
-  hr {
-    width: 100%; /* 너비를 설정 */
-    height: 2px; /* 높이를 설정 */
-    background-color: #0000003c;
-    border: none; /* 기본 테두리를 제거 */
-    margin: 1em 0;
-  }
 `;
 
 const PostDetailPage = () => {
   const { post_id } = useParams(); // 게시글 아이디
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/`);
+  };
 
   return (
     <>
       <StDetail>
+        <img src={logo} alt="홈" onClick={handleClick} />
         <PostContents postId={post_id} />
-        <Comments postId={post_id} />
+        {/* <Comments postId={post_id} /> */}
       </StDetail>
     </>
   );
