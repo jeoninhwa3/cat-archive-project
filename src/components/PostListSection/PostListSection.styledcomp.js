@@ -4,9 +4,8 @@ export const PostItemContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 10px;
-
   column-gap: 20px;
-  padding: 20px;
+  padding: 20px 120px;
 `;
 
 export const PostItem = styled.div`
@@ -24,7 +23,7 @@ export const PostItem = styled.div`
 export const PostImg = styled.div`
   background-color: white;
   width: 90%;
-  height: 30px;
+  height: 600px;
 `;
 
 export const PostTextSection = styled.div`
