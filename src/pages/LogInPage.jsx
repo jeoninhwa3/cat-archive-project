@@ -1,5 +1,5 @@
-const LogInPage = () => {
-  return <div>LogInPage</div>;
+const LogInPage = async () => {
+  <></>;
 };
 
 export default LogInPage;
