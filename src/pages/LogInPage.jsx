@@ -1,14 +1,19 @@
-
-import '../index.css';
-import { useState } from 'react';
-import supabase from '../supabaseClient';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import supabase from '../supabaseClient';
 
-const LogInPage = async () => {
-  <></>;
-};
+import {
+  MainStation,
+  UpperBox,
+  MainLogo,
+  InnerText,
+  SignButton,
+  H2,
+  H3,
+  H4,
+  UnderBox,
+  LinkText
+} from '../components/loginstyled.jsx';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -52,36 +57,36 @@ function LoginPage() {
   }, [user]);
 
   return (
-    <form onSubmit={handleSubmit} className="logincard">
-      <div className="loginbox">
-        <h1>갓생챌린지</h1>
-        <div>
-          <input type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <div>
-          <button onClick={signInUser} disabled={!email || !password}>
-            로그인
-          </button>
-        </div>
+    <MainStation onSubmit={handleSubmit}>
+      <UpperBox>
+        <MainLogo>갓생챌린지</MainLogo>
+
+        <InnerText type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
+
+        <InnerText
+          type="password"
+          placeholder="비밀번호를 입력해주세요"
+          value={password}
+          onChange={handlePasswordChange}
+        />
+
+        <SignButton onClick={signInUser} disabled={!email || !password}>
+          로그인
+        </SignButton>
+
         <div>―――――― 또는 ――――――</div>
-        <h2 className="githublogin">깃헙으로 로그인</h2>
-        <h3 className="googlelogin">구글으로 로그인</h3>
-        <h4>비밀번호를 잊으셧나요?</h4>
-      </div>
-      <div className="gotoregister">
-        <Link className="gotologin" to="/Register">
-          새 계정 만들기
-        </Link>
-      </div>
-    </form>
+
+        <H2>깃헙으로 로그인</H2>
+
+        <H3>구글으로 로그인</H3>
+
+        <H4>비밀번호를 잊으셧나요?</H4>
+      </UpperBox>
+
+      <UnderBox>
+        <LinkText to="/Register">새 계정 만들기</LinkText>
+      </UnderBox>
+    </MainStation>
   );
 }
 
