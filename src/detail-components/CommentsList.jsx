@@ -18,6 +18,8 @@ const StComments = styled.div`
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px; /* 댓글 간격 조정 */
+    padding: 8px; /* 댓글 내부 패딩 */
   }
 `;
 
@@ -75,21 +77,19 @@ const CommentsList = ({ postId, sessionId }) => {
   };
 
   return (
-    <>
-      <StComments>
-        <ul>
-          {comments.map((comment) => (
-            <li key={comment.id}>
-              <img src={comment.img} alt="유저사진" />
-              <p>{comment.name}</p>
-              <p>{comment.content}</p>
-              <button onClick={() => handleUpdate(comment)}>수정</button>
-              <button onClick={() => handleDelete(comment)}>삭제</button>
-            </li>
-          ))}
-        </ul>
-      </StComments>
-    </>
+    <StComments>
+      <ul>
+        {comments.map((comment) => (
+          <li key={comment.id}>
+            <img src={comment.img} alt="유저사진" />
+            <p>{comment.name}</p>
+            <p>{comment.content}</p>
+            <button onClick={() => handleUpdate(comment)}>수정</button>
+            <button onClick={() => handleDelete(comment)}>삭제</button>
+          </li>
+        ))}
+      </ul>
+    </StComments>
   );
 };
 

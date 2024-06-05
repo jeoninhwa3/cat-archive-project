@@ -1,5 +1,5 @@
 import React from 'react';
-// import Comments from '../detail-components/Comments';
+import Comments from '../detail-components/Comments';
 import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ const StDetail = styled.div`
   align-items: center;
   text-align: center;
   max-width: 60vw;
-  height: 100v;
+  height: 100vh;
   margin: 0 auto;
 
   hr {
@@ -25,13 +25,13 @@ const StDetail = styled.div`
 `;
 
 const PostDetailPage = () => {
-  const { postId } = useParams(); // 게시글 아이디
+  const { post_id } = useParams(); // 게시글 아이디
 
   return (
     <>
       <StDetail>
-        <PostContents postId={postId} />
-        <Comments postId={postId} />
+        <PostContents postId={post_id} />
+        <Comments postId={post_id} />
       </StDetail>
     </>
   );
