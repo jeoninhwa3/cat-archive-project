@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <UserProfilePage></UserProfilePage>
       },
       {
-        path: '/createNewPost/:post_id',
+        path: '/createNewPost',
         element: <CreateNewPostPage></CreateNewPostPage>
       },
       {
