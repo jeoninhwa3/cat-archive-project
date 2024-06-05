@@ -1,9 +1,9 @@
-import UserRevisePosting from '../components/UserRevisePosting';
+import DetailPosting from '../components/DetailPosting';
 
 const PostDetailPage = () => {
   return (
     <div>
-      <UserRevisePosting />
+      <DetailPosting />
     </div>
   );
 };
