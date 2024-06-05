@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import supabase from '../supabaseClient';
 
 import {
@@ -21,7 +21,6 @@ function RegisterPage() {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -53,6 +52,7 @@ function RegisterPage() {
 
     console.log('signup: ', { data, error });
     console.log('usersdata: ', { usersData, userInsertError });
+    console.log(user);
     setUser(data.user);
   };
 
@@ -95,12 +95,6 @@ function RegisterPage() {
     signUpNewUser();
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate('/');
-    }
-  }, [user]);
-
   return (
     <MainStation onSubmit={handleSubmit}>
       <UpperBox>
@@ -109,15 +103,15 @@ function RegisterPage() {
         <H3>구글으로 로그인</H3>
         <OrChoose>―――――― 또는 ――――――</OrChoose>
 
-        <InnerText type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
+        <InnerText type="email" placeholder="  이메일" value={email} onChange={handleEmailChange} />
 
-        <InnerText type="name" placeholder="이름" value={name} onChange={handleNameChange} />
+        <InnerText type="name" placeholder="  이름" value={name} onChange={handleNameChange} />
 
-        <InnerText type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
+        <InnerText type="password" placeholder="  비밀번호" value={password} onChange={handlePasswordChange} />
 
         <InnerText
           type="password"
-          placeholder="비밀번호 확인"
+          placeholder="  비밀번호 확인"
           value={passwordConfirm}
           onChange={handlePasswordConfirmChange}
         />

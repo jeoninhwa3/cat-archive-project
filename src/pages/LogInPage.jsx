@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import supabase from '../supabaseClient';
 
 import {
@@ -19,7 +19,6 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -34,7 +33,14 @@ function LoginPage() {
       password
     });
     console.log('signin: ', { data, error });
-    setUser(data.user);
+    console.log(user);
+    if (error.message === 'Invalid login credentials') {
+      alert('이메일 혹은 비밀번호를 다시 입력해 주세요');
+      location.reload(true);
+      return;
+    } else {
+      setUser(data.user);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -50,22 +56,16 @@ function LoginPage() {
     signInUser();
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate('/');
-    }
-  }, [user]);
-
   return (
     <MainStation onSubmit={handleSubmit}>
       <UpperBox>
         <MainLogo>갓생챌린지</MainLogo>
 
-        <InnerText type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
+        <InnerText type="email" placeholder="  이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
 
         <InnerText
           type="password"
-          placeholder="비밀번호를 입력해주세요"
+          placeholder="  비밀번호를 입력해주세요"
           value={password}
           onChange={handlePasswordChange}
         />
