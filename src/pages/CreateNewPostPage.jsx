@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -22,17 +22,6 @@ const InputField = styled.input`
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-const PostList = styled.div`
-  margin-top: 20px;
-`;
-
-const PostItem = styled.div`
-  background-color: #f5f5f5;
-  padding: 10px;
-  margin-bottom: 10px;
   border-radius: 4px;
 `;
 
@@ -60,6 +49,7 @@ const CreateNewPostPage = () => {
   const [title, settitle] = useState('');
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
+  const fileInputRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -78,7 +68,7 @@ const CreateNewPostPage = () => {
 
   const addHandler = async () => {
     const session = await supabase.auth.getSession();
-    console.log(session);
+
     const { data, error } = await supabase.from('posts').insert({
       title,
       content,
@@ -88,11 +78,19 @@ const CreateNewPostPage = () => {
       console.log(error);
     } else {
       console.log(data);
+      console.log(session);
       alert('글 저장 완료');
       navigate('/');
     }
   };
-
+  const handleUrlChange = async (files) => {
+    const [file] = files;
+    if (!file) {
+      return;
+    }
+    const { data } = await supabase.storage.from('url').upload(`url_${Date.now()}.png`, file);
+    setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
+  };
   return (
     <Container>
       <Header>CreateNewPostPage</Header>
@@ -109,18 +107,13 @@ const CreateNewPostPage = () => {
         placeholder="내용을 입력하세요"
       />
 
-      <InputField type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL을 입력하세요" />
+      <InputField
+        onChange={(e) => handleUrlChange(e.target.files)}
+        type="file"
+        ref={fileInputRef}
+        placeholder="url을 입력하세요"
+      />
       <Button onClick={addHandler}>글추가</Button>
-      <PostList>
-        <h2>PostDetailPage</h2>
-        {postings.map((posting) => (
-          <PostItem key={posting.id}>
-            <h3>{posting.title}</h3>
-            <p>{posting.content}</p>
-            <img src={posting.url} alt="Post Image" />
-          </PostItem>
-        ))}
-      </PostList>
     </Container>
   );
 };
