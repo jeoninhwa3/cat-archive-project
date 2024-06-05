@@ -3,7 +3,6 @@ import supabase from '../supabaseClient';
 import styled from 'styled-components';
 
 const StComments = styled.div`
-  background-color: beige;
   display: flex;
   flex-direction: column;
   img {
@@ -18,28 +17,25 @@ const StComments = styled.div`
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 8px; /* 댓글 간격 조정 */
-    padding: 8px; /* 댓글 내부 패딩 */
+    margin-bottom: 8px;
+    padding: 8px;
   }
 `;
 
 const CommentsList = ({ postId, sessionId }) => {
   const [comments, setComments] = useState([]);
 
+  // postId에 해당하는 댓글 가져오기
   useEffect(() => {
-    // postId에 해당하는 댓글 가져오기
     const fetchComments = async () => {
-      let { data: comments, error } = await supabase.from('comments').select('*').eq('post_id', postId);
-      if (error) {
-        console.error('Error fetching comments:', error);
-      } else {
-        let sortedComments = comments.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        setComments(sortedComments);
-      }
+      let { data: postedComments } = await supabase.from('comments').select('*').eq('post_id', postId);
+
+      let sortedComments = postedComments.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      setComments(sortedComments);
     };
 
     fetchComments();
-  }, [postId]);
+  }, [comments]);
 
   // 댓글 수정(U)
   const handleUpdate = async (comment) => {
