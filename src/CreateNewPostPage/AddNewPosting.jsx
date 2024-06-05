@@ -115,16 +115,7 @@ const AddNewPosting = () => {
   return (
     <Container>
       <Header>CreateNewPostPage</Header>
-      <InputImgLabel htmlFor="file-upload">
-        🧷
-        <InputImg id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
-      </InputImgLabel>
-      <InputField
-        type="text"
-        value={isUploadingUrl ? '업로드 중...' : url}
-        disabled={isUploadingUrl}
-        placeholder="파일 업로드"
-      />
+
       <InputField
         type="text"
         value={title}
@@ -143,6 +134,16 @@ const AddNewPosting = () => {
         }}
         placeholder="내용을 입력하세요"
       />
+      <InputField
+        type="text"
+        value={isUploadingUrl ? '업로드 중...' : url}
+        disabled={isUploadingUrl}
+        placeholder="파일 업로드"
+      />
+      <InputImgLabel htmlFor="file-upload">
+        🧷
+        <InputImg id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
+      </InputImgLabel>
 
       <Button onClick={addHandler} disabled={isButtonDisabled}>
         글 추가
