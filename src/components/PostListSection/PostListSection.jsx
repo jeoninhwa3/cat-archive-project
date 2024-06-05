@@ -9,6 +9,7 @@ import {
   PostItemContainer,
   PostItemsTitle,
   PostTextSection,
+  PostTime,
   PostTitle
 } from './PostListSection.styledcomp';
 import { useNavigate } from 'react-router-dom';
@@ -40,17 +41,17 @@ const PostListSection = () => {
       const { data } = await supabase
         .from('posts')
         .select()
-        .range(postCounter, postCounter + 1)
+        .range(postCounter, postCounter + 2)
         .order('created_at', { ascending: true });
-      dispatch(COUNT_POSTS(2));
+      dispatch(COUNT_POSTS(3));
       dispatch(SET_POSTS([...posts, ...data]));
     } else {
       const { data } = await supabase
         .from('posts')
         .select()
-        .range(postCounter, postCounter + 1)
+        .range(postCounter, postCounter + 2)
         .order('created_at', { ascending: false });
-      dispatch(COUNT_POSTS(2));
+      dispatch(COUNT_POSTS(3));
       dispatch(SET_POSTS([...posts, ...data]));
     }
   };
@@ -85,19 +86,19 @@ const PostListSection = () => {
             >
               <PostImg $imgUrl={post.url ? `${post.url}` : `../../assets/temp_logo.png`}></PostImg>
               <PostTextSection>
-                <PostTitle>제목: {post.title}</PostTitle>
-                <PostContent> 내용: {post.content}</PostContent>
-                <PostContent>
-                  만든시간:
-                  {` ${post.created_at.slice(0, 10)} ${post.created_at.slice(11, 13)}시 ${post.created_at.slice(
-                    14,
-                    16
-                  )}분`}
-                </PostContent>
+                <PostTitle>{post.title}</PostTitle>
+                <PostContent>{post.content}</PostContent>
+                <PostTime>
+                  {` ${post.created_at.slice(0, 10)} ${post.created_at.slice(11, 13)}:${post.created_at.slice(14, 16)}`}
+                </PostTime>
               </PostTextSection>
             </PostItem>
           ))}
-        <div id="observer" style={{ height: '20px', color: 'white' }} ref={scrollLoadTargetRef}></div>
+        <div
+          id="observer"
+          style={{ marginTop: '100px', height: '20px', color: 'white' }}
+          ref={scrollLoadTargetRef}
+        ></div>
       </PostItemContainer>
     </>
   );

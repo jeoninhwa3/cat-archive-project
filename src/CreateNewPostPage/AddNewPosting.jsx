@@ -11,10 +11,12 @@ const Container = styled.div`
 
 const Header = styled.header`
   width: 100%;
-  background-color: #333;
+
   color: #fff;
   padding: 10px;
   margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 900;
 `;
 
 const InputField = styled.input`
@@ -114,7 +116,8 @@ const AddNewPosting = () => {
 
   return (
     <Container>
-      <Header>CreateNewPostPage</Header>
+
+      <Header>새 게시글 작성하기</Header>
 
       <InputField
         type="text"
