@@ -19,7 +19,7 @@ const StContainer = styled.div`
 const UserProfilePage = () => {
   const [posts, setPosts] = useState(null);
   const [user, setUser] = useState(null);
-
+  // 유저값 추가
   const navigate = useNavigate();
   // posts 전체 데이터 가지고 오기
   async function getPosts() {
