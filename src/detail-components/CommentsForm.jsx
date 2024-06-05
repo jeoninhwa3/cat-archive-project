@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
+import supabase from '../supabaseClient'; // supabase 임포트
 
 const StForm = styled.form`
   height: 50px;
@@ -17,13 +19,14 @@ const StForm = styled.form`
 const CommentsForm = ({ sessionId, postId }) => {
   const [inputComments, setInputComments] = useState('');
 
-  // 댓글생성(C) 댓글테이블에 추가
-  async function CreateComments() {
-    e.preventDefault();
-    setInputComments(e.target.value);
+  // 댓글 생성(C) 댓글테이블에 추가
+  const createComment = async (e) => {
+    // 이벤트 객체 e 추가
+    // e.preventDefault();
+    // 기본 제출 동작 막기
 
     //유저 이름이랑 프로필 이미지 찾기
-    let { data: users } = await supabase.from('users').select('sessionId');
+    let { data: users } = await supabase.from('users').select('*').eq('id', sessionId); // sessionId로 유저 정보 가져오기
     const userName = users[0].name;
     const usersImg = users[0].url;
 
@@ -40,11 +43,11 @@ const CommentsForm = ({ sessionId, postId }) => {
       .select('*');
 
     setInputComments('');
-  }
+  };
 
   return (
     <>
-      <StForm onSubmit={CreateComments}>
+      <StForm onSubmit={createComment}>
         <input type="text" value={inputComments} onChange={(e) => setInputComments(e.target.value)} />
         <button type="submit">댓글등록</button>
       </StForm>
