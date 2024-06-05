@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
+import { getUser } from '../api/auth';
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -29,9 +30,23 @@ const PostUpdate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const [posts, setPosts] = useState('');
   const [title, settitle] = useState('');
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, error } = await supabase.from('posts').select();
+
+      setPosts(data);
+    };
+    fetchData();
+    if (posts) {
+      const filterPosts = posts.find((post) => post.id === id);
+      console.log(filterPosts);
+    }
+  }, []);
 
   // 게시글 수정
   const editPost = async () => {
@@ -84,7 +99,7 @@ const PostUpdate = () => {
       </button>
       <button
         onClick={() => {
-          navigate('/myPage/:user_id');
+          navigate(`/myPage/${user.id}]`);
         }}
         type="submit"
       >

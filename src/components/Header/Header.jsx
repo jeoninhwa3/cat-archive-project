@@ -12,10 +12,17 @@ import {
 const Header = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [userId, setUserId] = useState('');
+
+  async function getPosts() {
+    const { data: getData, error } = await supabase.auth.getSession();
+    setUserId(getData.session.user.id);
+  }
+  getPosts();
 
   const handleHeaderBtnClick = (event) => {
     if (event.target.id === 'to-profile-btn') {
-      navigate('/myPage/:user_id');
+      navigate(`/myPage/${userId}`);
     }
   };
   const signOutUser = async (e) => {
@@ -25,7 +32,6 @@ const Header = () => {
     navigate('/login');
     setUser(null);
   };
-  console.log(user);
 
   return (
     <StyledHeader>
