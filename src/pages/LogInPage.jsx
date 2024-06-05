@@ -34,13 +34,7 @@ function LoginPage() {
       password
     });
     console.log('signin: ', { data, error });
-    if (error.message === 'Invalid login credentials') {
-      alert('이메일 혹은 비밀번호를 다시 입력해 주세요');
-      location.reload(true);
-      return;
-    } else {
-      setUser(data.user);
-    }
+    setUser(data.user);
   };
 
   const handleSubmit = (event) => {
