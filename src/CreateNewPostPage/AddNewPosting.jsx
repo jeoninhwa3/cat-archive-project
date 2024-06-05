@@ -42,6 +42,10 @@ const Button = styled.button`
   &:hover {
     background-color: #0056b3;
   }
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 `;
 
 const InputContent = styled.input`
@@ -74,27 +78,20 @@ const AddNewPosting = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isUploadingUrl, setIsUploadingUrl] = useState(false);
 
   const navigate = useNavigate();
 
+  const handleInputChange = () => {
+    const isTitleValid = title.trim() !== '';
+    const isContentValid = content.trim() !== '';
+    const isUrlValid = !isUploadingUrl && (url.trim() === '' || url.startsWith('https://'));
+    setIsButtonDisabled(!(isTitleValid && isContentValid && isUrlValid));
+  };
+
   const addHandler = async () => {
     const session = await supabase.auth.getSession();
-
-    if (!title.trim()) {
-      alert('제목을 입력하세요');
-      return;
-    }
-
-    if (!content.trim()) {
-      alert('내용을 입력하세요');
-      return;
-    }
-
-    if (!url.trim() && !url.startsWith('https://')) {
-      alert('올바른 URL을 입력하세요');
-      return;
-    }
-
     await supabase.from('posts').insert({ title, content, url });
 
     console.log(session);
@@ -103,38 +100,57 @@ const AddNewPosting = () => {
   };
 
   const handleUrlChange = async (files) => {
-    setUrl(''); // url 초기화
+    setUrl('');
+    setIsUploadingUrl(true);
+
     const [file] = files;
     if (!file) {
+      setIsUploadingUrl(false);
       return;
     }
+
     const { data } = await supabase.storage.from('url').upload(`url_${Date.now()}.png`, file);
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
+    setIsUploadingUrl(false);
   };
 
   return (
     <Container>
+
       <Header>새 게시글 작성하기</Header>
+
       <InputField
         type="text"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          setTitle(e.target.value);
+          handleInputChange();
+        }}
         placeholder="제목을 입력하세요"
       />
       <InputContent
         type="text"
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={(e) => {
+          setContent(e.target.value);
+          handleInputChange();
+        }}
         placeholder="내용을 입력하세요"
       />
-
-      <InputField type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="기다려주세요..." />
-
+      <InputField
+        type="text"
+        value={isUploadingUrl ? '업로드 중...' : url}
+        disabled={isUploadingUrl}
+        placeholder="파일 업로드"
+      />
       <InputImgLabel htmlFor="file-upload">
-        이미지 업로드
+        🧷
         <InputImg id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
       </InputImgLabel>
-      <Button onClick={addHandler}>글 추가</Button>
+
+      <Button onClick={addHandler} disabled={isButtonDisabled}>
+        글 추가
+      </Button>
     </Container>
   );
 };
