@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getUser } from '../api/auth';
+
+// styled-component
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -16,6 +17,7 @@ const InputField = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: white;
 `;
 const InputContent = styled.input`
   width: 100%;
@@ -30,23 +32,33 @@ const PostUpdate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [posts, setPosts] = useState('');
-  const [title, settitle] = useState('');
-  const [content, setContent] = useState('');
+  const [post, setPost] = useState();
+  const [title, settitle] = useState();
+  const [content, setContent] = useState();
   const [url, setUrl] = useState('');
 
+  console.log(title);
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await supabase.from('posts').select();
-
-      setPosts(data);
+      const { data, error } = await supabase.from('users').select().eq('id', id);
+      setPost(data[0]);
+      settitle(data[0].title);
+      setContent(data[0].content);
     };
     fetchData();
-    if (posts) {
-      const filterPosts = posts.find((post) => post.id === id);
-      console.log(filterPosts);
-    }
   }, []);
+
+  console.log(post);
+
+  const handleUrlChange = async (files) => {
+    const [file] = files;
+    if (!file) {
+      return;
+    }
+    const { data } = await supabase.storage.from('users').upload(`avatar_${Date.now()}.png`, file);
+    setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/${data.path}`);
+  };
+  console.log(url);
 
   // 게시글 수정
   const editPost = async () => {
@@ -85,12 +97,13 @@ const PostUpdate = () => {
       />
       <InputContent
         type="text"
+        accept="image/png, image/jpg"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="내용을 입력하세요"
       />
 
-      <InputField type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="URL을 입력하세요" />
+      <InputField id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
       <button onClick={editPost} type="submit">
         수정
       </button>
@@ -99,7 +112,7 @@ const PostUpdate = () => {
       </button>
       <button
         onClick={() => {
-          navigate(`/myPage/${user.id}]`);
+          navigate(-1);
         }}
         type="submit"
       >

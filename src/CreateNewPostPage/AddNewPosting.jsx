@@ -113,7 +113,6 @@ const AddNewPosting = () => {
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
     setIsUploadingUrl(false);
   };
-
   return (
     <Container>
 
