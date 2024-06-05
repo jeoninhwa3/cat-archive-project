@@ -1,9 +1,21 @@
-import '../index.css';
 import { useState } from 'react';
 import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+
+import {
+  LoginCard,
+  LoginBox,
+  MainLogo,
+  InnerText,
+  SignButton,
+  H2,
+  H3,
+  H4,
+  Gotoregister,
+  Gotologin
+} from '../components/loginstyled.jsx';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -47,36 +59,42 @@ function LoginPage() {
   }, [user]);
 
   return (
-    <form onSubmit={handleSubmit} className="logincard">
-      <div className="loginbox">
-        <h1>갓생챌린지</h1>
-        <div>
+    <LoginCard onSubmit={handleSubmit}>
+      <LoginBox>
+        <MainLogo>갓생챌린지</MainLogo>
+
+        <InnerText>
           <input type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
-        </div>
-        <div>
+        </InnerText>
+
+        <InnerText>
           <input
             type="password"
             placeholder="비밀번호를 입력해주세요"
             value={password}
             onChange={handlePasswordChange}
           />
-        </div>
-        <div>
-          <button onClick={signInUser} disabled={!email || !password}>
-            로그인
-          </button>
-        </div>
+        </InnerText>
+
+        <SignButton onClick={signInUser} disabled={!email || !password}>
+          로그인
+        </SignButton>
+
         <div>―――――― 또는 ――――――</div>
-        <h2 className="githublogin">깃헙으로 로그인</h2>
-        <h3 className="googlelogin">구글으로 로그인</h3>
-        <h4>비밀번호를 잊으셧나요?</h4>
-      </div>
-      <div className="gotoregister">
-        <Link className="gotologin" to="/Register">
-          새 계정 만들기
+
+        <H2>깃헙으로 로그인</H2>
+
+        <H3>구글으로 로그인</H3>
+
+        <H4>비밀번호를 잊으셧나요?</H4>
+      </LoginBox>
+
+      <Gotoregister>
+        <Link to="/Register">
+          <Gotologin>새 계정 만들기</Gotologin>
         </Link>
-      </div>
-    </form>
+      </Gotoregister>
+    </LoginCard>
   );
 }
 

@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
-  const [username, setUserName] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [user, setUser] = useState(null);
@@ -16,8 +16,8 @@ function RegisterPage() {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
-  const handleUserNameChange = (event) => {
-    setUserName(event.target.value);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
@@ -29,14 +29,15 @@ function RegisterPage() {
   const signUpNewUser = async () => {
     const { data, error } = await supabase.auth.signUp({
       email,
-      username,
+      name,
       password
     });
+    console.log('signup data => ', data);
 
     const { data: usersData, error: userInsertError } = await supabase.from('users').insert({
       id: data.user.id,
       email,
-      username,
+      name,
       password
     });
 
@@ -52,7 +53,7 @@ function RegisterPage() {
       return;
     }
 
-    if (!username.trim()) {
+    if (!name.trim()) {
       alert('이름을 입력해 주세요.');
       return;
     }
@@ -91,7 +92,7 @@ function RegisterPage() {
           <input type="email" placeholder="이메일" value={email} onChange={handleEmailChange} />
         </div>
         <div>
-          <input type="username" placeholder="이름" value={username} onChange={handleUserNameChange} />
+          <input type="name" placeholder="이름" value={name} onChange={handleNameChange} />
         </div>
         <div>
           <input type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
