@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -34,8 +35,13 @@ const Button = styled.button`
   color: #fff;
   border: none;
   border-radius: 4px;
+  transition: background-color 0.3s ease;
   cursor: pointer;
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
+
 const InputContent = styled.input`
   width: 100%;
   height: 500px;
@@ -44,27 +50,30 @@ const InputContent = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
+const InputImg = styled.input`
+  display: none;
+`;
+
+const InputImgLabel = styled.label`
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
 
 const AddNewPosting = () => {
-  const [postings, setPostings] = useState([]);
-  const [title, settitle] = useState('');
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data, error } = await supabase.from('posts').select();
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(data);
-        setPostings(data);
-      }
-    };
-    fetchData();
-  }, []);
 
   const addHandler = async () => {
     const session = await supabase.auth.getSession();
@@ -79,8 +88,8 @@ const AddNewPosting = () => {
       return;
     }
 
-    if (!url.trim()) {
-      alert('url을 입력하세요');
+    if (!url.trim() && !url.startsWith('https://')) {
+      alert('올바른 URL을 입력하세요');
       return;
     }
 
@@ -90,7 +99,9 @@ const AddNewPosting = () => {
     alert('글 저장 완료');
     navigate('/');
   };
+
   const handleUrlChange = async (files) => {
+    setUrl(''); // url 초기화
     const [file] = files;
     if (!file) {
       return;
@@ -98,13 +109,14 @@ const AddNewPosting = () => {
     const { data } = await supabase.storage.from('url').upload(`url_${Date.now()}.png`, file);
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
   };
+
   return (
     <Container>
       <Header>CreateNewPostPage</Header>
       <InputField
         type="text"
         value={title}
-        onChange={(e) => settitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
         placeholder="제목을 입력하세요"
       />
       <InputContent
@@ -114,9 +126,13 @@ const AddNewPosting = () => {
         placeholder="내용을 입력하세요"
       />
 
-      <InputField id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
+      <InputField type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="기다려주세요..." />
 
-      <Button onClick={addHandler}>글추가</Button>
+      <InputImgLabel htmlFor="file-upload">
+        이미지 업로드
+        <InputImg id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
+      </InputImgLabel>
+      <Button onClick={addHandler}>글 추가</Button>
     </Container>
   );
 };
