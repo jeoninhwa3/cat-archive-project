@@ -11,7 +11,7 @@ import {
 } from './PostListSection.styledcomp';
 
 const PostListSection = () => {
-  const [scrollLoadTargetRef, inView] = useInView();
+  const [scrollLoadTargetRef, scrollLoadTargetRefInView] = useInView();
   const [posts, setPosts] = useState([]);
 
   const [postCounter, setPostCounter] = useState(0);
@@ -20,18 +20,18 @@ const PostListSection = () => {
     const { data } = await supabase
       .from('posts')
       .select()
-      .range(postCounter, postCounter + 2);
-    setPostCounter(postCounter + 2);
+      .range(postCounter, postCounter + 0);
+    setPostCounter(postCounter + 1);
     setPosts([...posts, ...data]);
   }
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    if (inView) {
+    if (scrollLoadTargetRefInView) {
       console.log('데이터요청');
       getPosts();
     }
-  }, [inView]);
+  }, [scrollLoadTargetRefInView]);
 
   return (
     <>
@@ -39,16 +39,14 @@ const PostListSection = () => {
         {posts &&
           posts.map((post) => (
             <PostItem key={post.id}>
-              <PostImg></PostImg>
+              <PostImg imgUrl={post.url ? `${post.url}` : `../../assets/temp_logo.png`}></PostImg>
               <PostTextSection>
                 <PostTitle>{post.title}</PostTitle>
                 <PostContent>{post.content}</PostContent>
               </PostTextSection>
             </PostItem>
           ))}
-        <div id="observer" style={{ height: '20px', color: 'white' }} ref={scrollLoadTargetRef}>
-          옵저버
-        </div>
+        <div id="observer" style={{ height: '20px', color: 'white' }} ref={scrollLoadTargetRef}></div>
       </PostItemContainer>
     </>
   );
