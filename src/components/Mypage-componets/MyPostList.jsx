@@ -24,6 +24,12 @@ const StImg = styled.img`
   outline: none;
   object-fit: cover;
 `;
+const StTit = styled.h2`
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+`;
 const StTitle = styled.h3`
   font-size: 16px;
   font-weight: 700;
@@ -36,7 +42,7 @@ const MyPostList = ({ posts }) => {
 
   return (
     <div className="mypost_wrap">
-      <h2 className="mypage_title">내 게시글 보기</h2>
+      <StTit>내 게시글 보기</StTit>
       <StUl>
         {posts &&
           posts.map((el, idx) => {

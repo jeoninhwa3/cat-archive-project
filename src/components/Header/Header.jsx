@@ -12,10 +12,18 @@ import {
 const Header = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const [userId, setUserId] = useState('');
+
+  async function getPosts() {
+    const { data: getData, error } = await supabase.auth.getSession();
+    setUserId(getData.session.user.id);
+  }
+  getPosts();
+  console.log(userId);
 
   const handleHeaderBtnClick = (event) => {
     if (event.target.id === 'to-profile-btn') {
-      navigate('/myPage/:user_id');
+      navigate(`/myPage/${userId}`);
     }
   };
   const signOutUser = async (e) => {
