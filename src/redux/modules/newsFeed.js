@@ -10,10 +10,6 @@ const newsFeed = createSlice({
   name: 'newsFeed',
   initialState: initialState,
   reducers: {
-    TEMP_REDUCER: (state, action) => {
-      console.log(state);
-      console.log(action);
-    },
     SET_POST_ARRANGE_TYPE: (state, action) => {
       state.postsArrangeType = action.payload.postArrageType;
     },

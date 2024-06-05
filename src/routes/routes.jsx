@@ -8,19 +8,27 @@ import PostUpdate from '../pages/PostUpdate';
 import RegisterPage from '../pages/RegisterPage';
 import DefaultLayout from '../layout/DefaultLayout';
 
+export const unloggedInRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <LogInPage></LogInPage>
+  },
+  {
+    path: '/register',
+    element: <RegisterPage></RegisterPage>
+  },
+  {
+    path: '/LogIn',
+    element: <LogInPage></LogInPage>
+  }
+]);
+
 const router = createBrowserRouter([
   {
     element: <DefaultLayout></DefaultLayout>,
     children: [
       { path: '/', element: <MainPage></MainPage> },
-      {
-        path: '/logIn',
-        element: <LogInPage></LogInPage>
-      },
-      {
-        path: '/register',
-        element: <RegisterPage></RegisterPage>
-      },
+
       {
         path: '/myPage/:user_id',
         element: <UserProfilePage></UserProfilePage>
