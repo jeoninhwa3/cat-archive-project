@@ -1,18 +1,27 @@
-import { useEffect, useState } from 'react';
-// import dummy from '../dummy.json';
+// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getData } from '../api/posts';
+// import supabase from '../supabaseClient';
+import { useNavigate } from 'react-router-dom';
+// import supabase from '../supabaseClient';
 
 // styled-components
 const StUl = styled.ul`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 `;
 const StLi = styled.li`
-  border: 1px solid #000;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #eee;
 `;
 const StImg = styled.img`
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 170px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: none;
+  outline: none;
   object-fit: cover;
 `;
 const StTitle = styled.h3`
@@ -22,34 +31,28 @@ const StTitle = styled.h3`
   text-align: center;
 `;
 
-const MyPostList = () => {
-  const [posts, setPosts] = useState();
-
-  useEffect(() => {
-    getData()
-      //성공 시
-      .then((data) => {
-        setPosts(data);
-      })
-      //실패 시
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+const MyPostList = ({ posts }) => {
+  const navigate = useNavigate();
 
   return (
     <div className="mypost_wrap">
       <h2 className="mypage_title">내 게시글 보기</h2>
       <StUl>
-        {posts.map((el, idx) => {
-          return (
-            <StLi key={idx}>
-              <StImg src={el.img} alt="" />
-              <StTitle>{el.title}</StTitle>
-              {/* <p>{el.content}</p> */}
-            </StLi>
-          );
-        })}
+        {posts &&
+          posts.map((el, idx) => {
+            return (
+              <StLi
+                key={idx}
+                onClick={() => {
+                  navigate(`/PostUpdate/${el.id}`);
+                }}
+              >
+                <StImg src={el.url} alt="" />
+                <StTitle>{el.title}</StTitle>
+                {/* <p>{user.id}</p> */}
+              </StLi>
+            );
+          })}
       </StUl>
     </div>
   );
