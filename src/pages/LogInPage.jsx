@@ -13,7 +13,7 @@ import {
   H4,
   UnderBox,
   LinkText
-} from '../components/loginstyled.jsx';
+} from '../detail-components/LoginStyled';
 
 function LoginPage() {
   const [email, setEmail] = useState('');

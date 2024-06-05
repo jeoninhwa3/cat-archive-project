@@ -13,7 +13,7 @@ import {
   OrChoose,
   UnderBox,
   LinkText
-} from '../components/loginstyled.jsx';
+} from '../detail-components/LoginStyled';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -67,14 +67,19 @@ function RegisterPage() {
       alert('이메일을 다시 입력해 주세요');
       return;
     }
-    const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
 
     if (!name.trim()) {
       alert('이름을 입력해 주세요.');
       return;
     }
+
     if (!password.trim()) {
       alert('비밀번호를 입력해 주세요.');
+      return;
+    }
+    const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
+    if (!passwordRegEx.test(email)) {
+      alert('이메일을 다시 입력해 주세요');
       return;
     }
 
