@@ -4,6 +4,8 @@ import UserProfilePage from '../pages/UserProfilePage';
 import CreateNewPostPage from '../pages/CreateNewPostPage';
 import LogInPage from '../pages/LogInPage';
 import PostDetailPage from '../pages/PostDetailPage';
+import PostUpdate from '../pages/PostUpdate';
+import RegisterPage from '../pages/RegisterPage';
 import DefaultLayout from '../layout/DefaultLayout';
 
 const router = createBrowserRouter([
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/post/:post_id',
         element: <PostDetailPage></PostDetailPage>
+      },
+      {
+        path: '/PostUpdate/:id',
+        element: <PostUpdate></PostUpdate>
       }
     ]
   }
