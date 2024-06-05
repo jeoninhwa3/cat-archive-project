@@ -18,11 +18,15 @@ const router = createBrowserRouter([
         element: <LogInPage></LogInPage>
       },
       {
+        path: '/register',
+        element: <RegisterPage></RegisterPage>
+      },
+      {
         path: '/myPage/:user_id',
         element: <UserProfilePage></UserProfilePage>
       },
       {
-        path: '/createNewPost/:post_id',
+        path: '/createNewPost',
         element: <CreateNewPostPage></CreateNewPostPage>
       },
       {

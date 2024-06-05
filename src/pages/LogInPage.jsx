@@ -13,7 +13,7 @@ import {
   H4,
   UnderBox,
   LinkText
-} from '../detail-components/LoginStyled';
+} from '../components/Login-componets/LoginStyled';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -34,6 +34,9 @@ function LoginPage() {
       password
     });
     console.log('signin: ', { data, error });
+    if (error) {
+      alert('이메일과 비밀번호를 다시 입력해 주세요.');
+    }
     setUser(data.user);
   };
 
@@ -47,7 +50,6 @@ function LoginPage() {
       alert('비밀번호를 입력해 주세요.');
       return;
     }
-    signInUser();
   };
 
   useEffect(() => {

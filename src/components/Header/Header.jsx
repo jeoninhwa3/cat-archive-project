@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import supabase from '../../supabaseClient';
 import {
   Logo,
   StyledHeader,
@@ -9,19 +10,22 @@ import {
 } from './Header.styledcomp';
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  console.log(isLoggedIn);
 
   const handleHeaderBtnClick = (event) => {
     if (event.target.id === 'to-profile-btn') {
       navigate('/myPage/:user_id');
-    } else if (event.target.id === 'sign-out-btn') {
-      setIsLoggedIn(false);
-    } else if (event.target.id === 'sign-in-btn') {
-      setIsLoggedIn(true);
     }
   };
+  const signOutUser = async (e) => {
+    e.preventDefault();
+    const { data, error } = await supabase.auth.signOut();
+    console.log('signout: ', { data, error }); // data는 딱히 필요없을 듯
+    navigate('/login');
+    setUser(null);
+  };
+  console.log(user);
 
   return (
     <StyledHeader>
@@ -36,7 +40,7 @@ const Header = () => {
         <ProfileSignInOutBtn id="to-profile-btn" onClick={handleHeaderBtnClick}>
           마이페이지
         </ProfileSignInOutBtn>
-        <ProfileSignInOutBtn id="sign-out-btn" onClick={handleHeaderBtnClick}>
+        <ProfileSignInOutBtn id="sign-out-btn" onClick={signOutUser}>
           로그아웃
         </ProfileSignInOutBtn>
       </ProfileSignInOutBtnContainer>

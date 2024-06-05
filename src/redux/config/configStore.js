@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { TEMP_REDUCER } from '../modules/newsFeed';
+import newsFeed from '../modules/newsFeed';
+
 const store = configureStore({
-  reducer: { TEMP_REDUCER }
+  reducer: { newsFeed: newsFeed }
 });
 
 export default store;

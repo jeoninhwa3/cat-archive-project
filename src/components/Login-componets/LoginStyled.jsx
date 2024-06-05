@@ -12,6 +12,7 @@ export const UpperBox = styled.div`
   margin: 4% auto auto;
   border: 1px solid lightgrey;
   color: gray;
+  background-color: rgb(226 226 226);
 `;
 export const MainLogo = styled.div`
   margin: 50px auto 50px auto;
@@ -24,8 +25,9 @@ export const InnerText = styled.input`
   width: 70%;
   margin-bottom: 5px;
   height: 35px;
-  text-align: center;
+  text-align: left;
   border: 1px solid lightgrey;
+  padding-left: 17px;
 `;
 
 export const SignButton = styled.button`
@@ -71,9 +73,12 @@ export const UnderBox = styled.div`
   height: 70px;
   line-height: 70px;
   margin: 20px auto;
+  margin-bottom: 100px;
   border: 1px solid lightgrey;
   text-align: center;
   text-decoration: none;
+  color: gray;
+  background-color: rgb(226 226 226);
 `;
 
 export const LinkText = styled(Link)`

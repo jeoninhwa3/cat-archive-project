@@ -13,7 +13,7 @@ import {
   OrChoose,
   UnderBox,
   LinkText
-} from '../detail-components/LoginStyled';
+} from '../components/Login-componets/LoginStyled';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -62,11 +62,6 @@ function RegisterPage() {
       alert('이메일을 입력해 주세요.');
       return;
     }
-    const emailRegEx = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
-    if (!emailRegEx.test(email)) {
-      alert('이메일을 다시 입력해 주세요');
-      return;
-    }
 
     if (!name.trim()) {
       alert('이름을 입력해 주세요.');
@@ -77,12 +72,6 @@ function RegisterPage() {
       alert('비밀번호를 입력해 주세요.');
       return;
     }
-    const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
-    if (!passwordRegEx.test(email)) {
-      alert('이메일을 다시 입력해 주세요');
-      return;
-    }
-
     if (password.length < 8) {
       alert('비밀번호를 8자 이상 입력해 주세요.');
       return;
@@ -92,9 +81,7 @@ function RegisterPage() {
       alert('비밀번호가 일치하지 않습니다.');
       return;
     }
-    signUpNewUser();
   };
-
   useEffect(() => {
     if (user) {
       navigate('/');
@@ -117,12 +104,12 @@ function RegisterPage() {
 
         <InnerText
           type="password"
-          placeholder="비밀번호 확인"
+          placeholder="  비밀번호 확인"
           value={passwordConfirm}
           onChange={handlePasswordConfirmChange}
         />
 
-        <SignButton type="submit">가입</SignButton>
+        <SignButton onClick={signUpNewUser()}>가입</SignButton>
       </UpperBox>
 
       <UnderBox>

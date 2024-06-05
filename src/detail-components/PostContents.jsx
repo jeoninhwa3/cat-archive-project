@@ -1,5 +1,38 @@
 import React from 'react';
 import supabase from '../supabaseClient';
+import styled from 'styled-components';
+
+const StTitle = styled.div`
+  width: 60%;
+  height: 40%;
+  margin-bottom: 0;
+`;
+
+const StUser = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+`;
+
+const StProfile = styled.div`
+  display: flex;
+`;
+
+const StPosts = styled.div`
+  img {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 400px;
+    object-fit: cover;
+  }
+`;
 
 const PostContents = async ({ postId }) => {
   //파람스 아이디에 해당하는 게시물 가져오기
@@ -23,17 +56,21 @@ const PostContents = async ({ postId }) => {
 
   return (
     <>
-      <div>
-        <h2>{post.title}</h2>
+      <StTitle>
+        <h1>{post.title}</h1>
+        <StUser>
+          <StProfile>
+            <img src={user.url} alt="유저사진" />
+            <p>{user.name}</p>
+          </StProfile>
+          <p>{formattedDate}</p>
+        </StUser>
+      </StTitle>
+      <hr />
+      <StPosts>
         <img src={post.url} alt="게시글 이미지" />
         <p>{post.content}</p>
-      </div>
-
-      <div>
-        <img src={user.url} alt="유저사진" />
-        <p>{user.name}</p>
-        <p>{formattedDate}</p>
-      </div>
+      </StPosts>
     </>
   );
 };
