@@ -1,46 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from '../supabaseClient';
 import CommentsForm from './CommentsForm';
 import CommentsList from './CommentsList';
-import styled from 'styled-components';
-
-const StCommentsDiv = styled.div`
-  background-color: aliceblue;
-`;
 
 const Comments = ({ postId }) => {
   const [sessionId, setSessionId] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchSession = async () => {
+    const fetchSessionId = async () => {
       try {
-        // 로그인한 유저 id 알아내기
         const {
-          data: { session }
+          data: { session },
+          error
         } = await supabase.auth.getSession();
-        if (session) {
-          setSessionId(session.user.id);
+        if (error) {
+          throw error;
         }
+        setSessionId(session.user.id);
       } catch (error) {
-        console.error('Error fetching session:', error);
-      } finally {
-        setLoading(false);
+        console.error('Error fetching session ID:', error);
       }
     };
 
-    fetchSession();
-  }, []);
+    fetchSessionId(); // sessionId를 인자로 전달할 필요 없음
+  }, []); // 빈 의존성 배열을 사용하여 한 번만 실행되도록 함
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+  console.log(sessionId);
   return (
-    <StCommentsDiv>
+    <>
       <CommentsForm sessionId={sessionId} postId={postId} />
       <CommentsList sessionId={sessionId} postId={postId} />
-    </StCommentsDiv>
+    </>
   );
 };
 

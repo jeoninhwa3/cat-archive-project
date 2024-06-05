@@ -14,12 +14,15 @@ import {
   UnderBox,
   LinkText
 } from '../components/Login-componets/LoginStyled';
+import { useDispatch } from 'react-redux';
+import { SET_IS_LOGGED_IN } from '../redux/modules/newsFeed';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -54,6 +57,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (user) {
+      dispatch(SET_IS_LOGGED_IN(true));
       navigate('/');
     }
   }, [user]);

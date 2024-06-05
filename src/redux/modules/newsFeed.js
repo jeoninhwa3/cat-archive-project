@@ -1,19 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
+import supabase from '../../supabaseClient';
+
+const {
+  data: { user }
+} = await supabase.auth.getUser();
 
 const initialState = {
   postsArrangeType: 'latest',
   posts: [],
-  postsCounter: 0
+  postsCounter: 0,
+  isLoggedIn: user ? true : false
 };
 
 const newsFeed = createSlice({
   name: 'newsFeed',
   initialState: initialState,
   reducers: {
-    TEMP_REDUCER: (state, action) => {
-      console.log(state);
-      console.log(action);
-    },
     SET_POST_ARRANGE_TYPE: (state, action) => {
       state.postsArrangeType = action.payload.postArrageType;
     },
@@ -25,9 +27,12 @@ const newsFeed = createSlice({
     },
     SET_POSTS_COUNTER: (state, action) => {
       state.postsCounter = action.payload;
+    },
+    SET_IS_LOGGED_IN: (state, action) => {
+      state.isLoggedIn = action.payload;
     }
   }
 });
 
-export const { TEMP_REDUCER, SET_POST_ARRANGE_TYPE, SET_POSTS, COUNT_POSTS, SET_POSTS_COUNTER } = newsFeed.actions;
+export const { SET_IS_LOGGED_IN, SET_POST_ARRANGE_TYPE, SET_POSTS, COUNT_POSTS, SET_POSTS_COUNTER } = newsFeed.actions;
 export default newsFeed.reducer;

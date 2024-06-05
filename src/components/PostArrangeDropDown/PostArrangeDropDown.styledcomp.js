@@ -18,7 +18,7 @@ export const PostArrangeDropDownTitle = styled.button`
   &:hover {
     cursor: pointer;
   }
-  width: 250px;
+  width: 200px;
   text-align: start;
 `;
 

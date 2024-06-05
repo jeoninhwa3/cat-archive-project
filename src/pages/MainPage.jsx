@@ -10,7 +10,6 @@ const MainPage = () => {
   });
   return (
     <div>
-      <p style={{ color: 'white' }}>{postsArrangeType}</p>
       <AddNewPostSection></AddNewPostSection>
       <PostListSection></PostListSection>
     </div>
