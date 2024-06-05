@@ -34,6 +34,7 @@ function RegisterPage() {
     });
 
     const { data: usersData, error: userInsertError } = await supabase.from('users').insert({
+      id: data.user.id,
       email,
       username,
       password
@@ -61,7 +62,7 @@ function RegisterPage() {
     }
 
     if (password.length < 8) {
-      alert('8자 이상 입력해 주세요.');
+      alert('비밀번호를 8자 이상 입력해 주세요.');
       return;
     }
 
