@@ -37,15 +37,16 @@ const router = createBrowserRouter([
         path: '/createNewPost',
         element: <CreateNewPostPage></CreateNewPostPage>
       },
-      {
-        path: '/post/:post_id',
-        element: <PostDetailPage></PostDetailPage>
-      },
+
       {
         path: '/PostUpdate/:id',
         element: <PostUpdate></PostUpdate>
       }
     ]
+  },
+  {
+    path: '/post/:post_id',
+    element: <PostDetailPage></PostDetailPage>
   }
 ]);
 
