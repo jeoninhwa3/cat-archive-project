@@ -20,7 +20,11 @@ const MainPosting = () => {
     <div>
       <div>
         {postings.map((posting) => {
-          return <Link to="/myPage/:user_id">{posting.title}</Link>;
+          return (
+            <Link to="/myPage/:user_id" key={posting.id}>
+              {posting.title}
+            </Link>
+          );
         })}
       </div>
     </div>

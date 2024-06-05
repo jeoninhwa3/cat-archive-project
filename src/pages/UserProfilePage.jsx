@@ -1,8 +1,7 @@
-import React from 'react';
-import UserPosting from '../components/UserPosting';
+import UserRevisePosting from '../components/UserRevisePosting';
 
 const UserProfilePage = () => {
-  return <UserPosting />;
+  return <UserRevisePosting />;
 };
 
 export default UserProfilePage;

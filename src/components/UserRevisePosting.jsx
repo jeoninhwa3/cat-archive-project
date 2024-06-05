@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import supabase from '../supabaseClient';
 import { Link } from 'react-router-dom';
 
-const UserPosting = () => {
+const UserRevisePosting = () => {
   const [postings, setPostings] = useState([]);
 
   useEffect(() => {
@@ -22,11 +22,15 @@ const UserPosting = () => {
       <h1>UserProfilePage</h1>
       <div>
         {postings.map((posting) => {
-          return <Link to="/createNewPost/:post_id">{posting.title}</Link>;
+          return (
+            <Link to="/createNewPost/:post_id" key={posting.id}>
+              {posting.title}
+            </Link>
+          );
         })}
       </div>
     </div>
   );
 };
 
-export default UserPosting;
+export default UserRevisePosting;
