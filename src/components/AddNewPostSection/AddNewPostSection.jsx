@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 const AddNewPostSection = () => {
-  return <div>AddNewPostSection</div>;
+  return <Link to="/createNewPost/:post_id"> o</Link>;
 };
 
 export default AddNewPostSection;
