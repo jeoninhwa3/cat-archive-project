@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ProfileForm from '../components/ProfileForm';
 import MyPostList from '../components/MyPostList';
 import { getUser } from '../api/auth';
+import { useNavigate } from 'react-router-dom';
 // import MyChallenge from '../components/MyChallenge';
 // import { useNavigate } from 'react-router-dom';
 // import dummy from '../dummy.json';
@@ -19,6 +20,7 @@ const UserProfilePage = () => {
   const [posts, setPosts] = useState(null);
   const [user, setUser] = useState(null);
 
+  const navigate = useNavigate();
   // posts 전체 데이터 가지고 오기
   async function getPosts() {
     const { data } = await supabase.from('posts').select();
@@ -30,6 +32,9 @@ const UserProfilePage = () => {
   console.log(user);
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
     getPosts();
     const fetchData = async () => {
       const userData = await getUser();
@@ -46,7 +51,7 @@ const UserProfilePage = () => {
     // const PostFilter = posts.filter((post) => post.id == 'ebcec2cd-ff09-45af-bea5-d99673c45cfe');
     // console.log(PostFilter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
   return (
     <StContainer>
       <ProfileForm />
