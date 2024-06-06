@@ -42,7 +42,7 @@ export const PostItem = styled.div`
   padding: 30px 0px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(51, 52, 59);
+  background-color: #c7c7c7;
   color: white;
   justify-content: start;
   align-items: center;
@@ -73,7 +73,7 @@ export const PostTextSection = styled.div`
 `;
 
 export const PostTitle = styled.h1`
-  color: white;
+  color: black;
   font-size: 1.6rem;
   font-weight: 900;
   width: 100%;
@@ -83,7 +83,7 @@ export const PostTitle = styled.h1`
 `;
 
 export const PostContent = styled.p`
-  color: #adacac;
+  color: #303030;
   font-size: 1rem;
 
   width: 100%;
@@ -96,6 +96,6 @@ export const PostContent = styled.p`
 `;
 
 export const PostTime = styled.p`
-  color: #8f8f8f;
+  color: #303030;
   font-size: 0.8rem;
 `;
