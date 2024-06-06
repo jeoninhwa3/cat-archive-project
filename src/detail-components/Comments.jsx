@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import supabase from '../supabaseClient';
 import CommentsForm from './CommentsForm';
 import CommentsList from './CommentsList';
+import styled from 'styled-components';
+
+const StCommentsArea = styled.div``;
 
 const Comments = ({ postId }) => {
   const [sessionId, setSessionId] = useState(null);
@@ -23,13 +26,14 @@ const Comments = ({ postId }) => {
     };
 
     fetchSessionId();
-  }, []); // 빈 의존성 배열을 사용하여 한 번만 실행되도록 함
+  }, []); //처음 렌더링 시 로그인 한 유저아이디 찾아서 할당
 
-  console.log(sessionId);
   return (
     <>
-      <CommentsForm sessionId={sessionId} postId={postId} />
-      <CommentsList sessionId={sessionId} postId={postId} />
+      <StCommentsArea>
+        <CommentsForm sessionId={sessionId} postId={postId} />
+        <CommentsList sessionId={sessionId} postId={postId} />
+      </StCommentsArea>
     </>
   );
 };

@@ -3,6 +3,7 @@ import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const StDetail = styled.div`
   background-color: white;
@@ -10,18 +11,18 @@ const StDetail = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 87vw;
+  width: 55vw;
   margin: 0 auto;
   padding: 50px;
 `;
 
 const PostDetailPage = () => {
-  const { post_id } = useParams(); // 게시글 아이디
-  const navigate = useNavigate();
+  //디테일페이지 들어오면 스크롤위치 맨 위로 조정
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  const handleClick = () => {
-    navigate(`/`);
-  };
+  const { post_id } = useParams(); // 게시글 아이디 변수할당
 
   return (
     <>
