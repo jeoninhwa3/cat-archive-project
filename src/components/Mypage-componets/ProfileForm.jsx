@@ -2,7 +2,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import supabase from '../../supabaseClient';
 // import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 // styled-components
 const StProfileBox = styled.div`
@@ -21,11 +20,17 @@ const StImg = styled.img`
   border-radius: 50%;
   object-fit: cover;
 `;
+const StImgBox = styled.div`
+  position: relative;
+`;
 const StButton = styled.button`
   font-size: 15px;
   border: none;
   padding: 3px 10px 5px;
   border-radius: 7px;
+`;
+const StIcon = styled.span`
+  position: absolute;
 `;
 const StInput = styled.input`
   width: 0;
@@ -34,29 +39,15 @@ const StInput = styled.input`
   overflow: hidden;
 `;
 
-const ProfileForm = () => {
+const ProfileForm = ({ user }) => {
+  console.log(user);
   // const dispatch = useDispatch();
-  const { id } = useParams();
   // const [user, setUser] = useState();
   const [url, setUrl] = useState(
     'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg'
   );
 
-  // const getUsers = async () => {
-  //   const { data: users, error } = await supabase.from('users').select().eq('id', id);
-  //   setUser(users);
-  //   if (error) {
-  //     console.log(error);
-  //     return;
-  //   }
-  //   return users;
-  // };
-
-  // useEffect(() => {
-  //   getUsers().then((user) => dispatch(setUser(user)));
-  // }, []);
-
-  async function handleFileInputChange(files) {
+  const handleFileInputChange = async (files) => {
     const [file] = files;
 
     if (!file) {
@@ -66,28 +57,30 @@ const ProfileForm = () => {
     const { data } = await supabase.storage.from('users').upload(`avatar_${Date.now()}.png`, file);
 
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/${data.path}`);
-  }
-
+  };
+  console.log(url);
   // 프로필 사진 변경
   const addHandler = async () => {
     const { data, error } = await supabase
-      .from('user')
+      .from('users')
       .update({
         url
       })
-      .eq('id', id)
+      .eq('id', user.id)
       .select();
     if (error) {
       console.log(error);
     } else {
       console.log(data);
-      alert('글 수정 완료');
     }
   };
   console.log(url);
   return (
     <StProfileBox>
-      <StImg src={url} alt="미리보기 이미지" />
+      <StImgBox>
+        <StImg src={url} alt="미리보기 이미지" />
+        <StIcon className="material-symbols-outlined">settings</StIcon>
+      </StImgBox>
       {/* <p style={{ color: '#fff' }}>{user.email}님 안녕하세요!</p> */}
       <StButton onClick={addHandler}>프로필 수정하기</StButton>
       <form>
