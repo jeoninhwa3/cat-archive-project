@@ -89,10 +89,11 @@ const PostListSection = () => {
                   <PostTitle>{post.title}</PostTitle>
                   <PostContent>{post.content}</PostContent>
                   <PostTime>
-                    {` ${post.created_at.slice(0, 10)} ${post.created_at.slice(11, 13)}:${post.created_at.slice(
+                    {post.created_at}
+                    {/* {` ${post.created_at.slice(0, 10)} ${post.created_at.slice(11, 13)}:${post.created_at.slice(
                       14,
                       16
-                    )}`}
+                    )}`} */}
                   </PostTime>
                 </PostTextSection>
               </PostItem>

@@ -20,7 +20,25 @@ const newsFeed = createSlice({
       state.postsArrangeType = action.payload.postArrageType;
     },
     SET_POSTS: (state, action) => {
-      state.posts = [...action.payload];
+      const newArray = action.payload.map((item) => {
+        const inputDate = new Date(item.created_at);
+        const new_date = new Intl.DateTimeFormat('ko-KR', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        }).format(inputDate);
+
+        return {
+          ...item,
+          ...{
+            created_at: new_date
+          }
+        };
+      });
+      state.posts = [...newArray];
     },
     COUNT_POSTS: (state, action) => {
       state.postsCounter += action.payload;
