@@ -49,6 +49,12 @@ const CommentsForm = ({ sessionId, postId }) => {
   const createComment = async (e) => {
     e.preventDefault();
 
+    //유효성 검사
+    if (!inputComments) {
+      alert('댓글 내용을 입력하세요');
+      return;
+    }
+
     //로그인한 유저의 이름이랑 프로필 이미지 찾기
     let { data: users } = await supabase.from('users').select('*').eq('id', sessionId);
     const userName = users[0].name;
