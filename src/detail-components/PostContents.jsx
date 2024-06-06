@@ -35,7 +35,7 @@ const StContent = styled.div`
   align-items: center;
   width: 80%;
   padding: 20px;
-  margin-bottom: 180px;
+  margin-bottom: 240px;
   img {
     margin-top: 40px;
     margin-bottom: 10px;
