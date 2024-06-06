@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
+import defaultImg from '../assets/defaultImg.jpg';
 
 const StComments = styled.div`
   display: flex;
@@ -23,7 +24,6 @@ const StComments = styled.div`
 `;
 
 const CommentsList = ({ postId, sessionId }) => {
-  const defaultImg = 'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg';
   const [comments, setComments] = useState([]);
 
   // postId에 해당하는 댓글 가져오기

@@ -1,39 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
+import defaultImg from '../assets/defaultImg.jpg';
 
 const StTitle = styled.div`
-  margin-top: 85px;
-  font-size: 36px;
+  margin-top: 55px;
+  font-size: 46px;
   font-weight: bold;
 `;
 const StUser = styled.div`
   width: 100%;
   height: 120px;
-  margin-top: 60px;
+  margin-top: 50px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
   img {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
   }
+
   span {
     opacity: 0.5;
   }
 `;
 
+//게시글(R)
 const StContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 80%;
-  margin-top: 50px;
-  padding: 30px;
+  padding: 20px;
+  margin-bottom: 80px;
   img {
-    margin-top: 60px;
-    margin-bottom: 60px;
-    width: 60%;
-    height: 400px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    width: 550px;
+    height: 500px;
+    object-fit: contain;
   }
 `;
 
@@ -41,7 +51,6 @@ const PostContents = ({ postId }) => {
   const [post, setPost] = useState({});
   const [user, setUser] = useState({});
   const [formattedDate, setFormattedDate] = useState('');
-  const defaultImg = 'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg';
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -82,7 +91,7 @@ const PostContents = ({ postId }) => {
 
       <StContent>
         <hr />
-        <img src={post.url} alt="게시글 이미지" />
+        {post.url && <img src={post.url} alt="게시글 이미지" />}
         <p>{post.content}</p>
       </StContent>
     </>
