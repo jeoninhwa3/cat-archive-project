@@ -35,7 +35,7 @@ const StContent = styled.div`
   align-items: center;
   width: 80%;
   padding: 20px;
-  margin-bottom: 180px;
+  margin-bottom: 240px;
   img {
     margin-top: 40px;
     margin-bottom: 10px;
@@ -82,6 +82,7 @@ const PostContents = ({ postId }) => {
   return (
     <>
       <StTitle>{post.title}</StTitle>
+
       <StUser>
         <img src={user.url ? user.url : defaultImg} alt="유저사진" />
         <p>{user.name}</p>
