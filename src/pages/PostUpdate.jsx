@@ -49,9 +49,9 @@ const PostUpdate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [post, setPost] = useState();
-  const [title, settitle] = useState();
-  const [content, setContent] = useState();
+  const [post, setPost] = useState('');
+  const [title, settitle] = useState('');
+  const [content, setContent] = useState('');
   const [url, setUrl] = useState('');
 
   // post 데이터 추가
