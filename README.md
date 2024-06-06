@@ -76,7 +76,7 @@
 
 #### 3. 게시물 생성페이지
 
-<img src= "" width="680" height="350">
+<img src= "(https://github.com/hyejinleeee/B05/assets/161686758/52625ece-01c3-408e-a496-29222afea128)" width="680" height="350">
 
 #### 4. 댓글 작성 기능
 
