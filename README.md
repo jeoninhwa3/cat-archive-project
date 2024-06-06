@@ -19,13 +19,12 @@
 
 ## 팀원
 
-## 💻 팀원
-
+| 개발자 | GITHUB                            |
 | ------ | --------------------------------- |
-| 이혜진 | https://github.com/hyejinleeee |
-| 전인화 | https://github.com/jeoninhwa3 |
-| 강윤서 | https://github.com/dbsjt |
-| 윤기준 | https://github.com/sobbingtofu |
+| 이혜진 | https://github.com/hyejinleeee    |
+| 전인화 | https://github.com/jeoninhwa3     |
+| 강윤서 | https://github.com/dbsjt          |
+| 윤기준 | https://github.com/sobbingtofu    |
 | 양대우 | https://github.com/DAEWOOYANG0310 |
 
 <br>
@@ -68,11 +67,11 @@
 
 #### 1. 회원가입
 
-<img src= "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msIHC.img"alt="접근제한" width="680" height="350">
+<img src= "https://github.com/hyejinleeee/B05/issues/18#issue-2337208982"alt="접근제한" width="680" height="350">
 
 #### 2. 메인페이지
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "https://github.com/hyejinleeee/B05/issues/19#issue-2337209732"alt="접근제한" width="680" height="350">
 
 #### 3. 게시물 생성페이지
 
