@@ -12,7 +12,6 @@ const StUser = styled.div`
   width: 100%;
   height: 120px;
   margin-top: 50px;
-  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,13 +30,12 @@ const StUser = styled.div`
   }
 `;
 
-//게시글(R)
 const StContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 80%;
   padding: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 180px;
   img {
     margin-top: 40px;
     margin-bottom: 10px;
@@ -47,6 +45,7 @@ const StContent = styled.div`
   }
 `;
 
+//게시글(R)
 const PostContents = ({ postId }) => {
   const [post, setPost] = useState({});
   const [user, setUser] = useState({});

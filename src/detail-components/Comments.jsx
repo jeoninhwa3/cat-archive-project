@@ -4,7 +4,11 @@ import CommentsForm from './CommentsForm';
 import CommentsList from './CommentsList';
 import styled from 'styled-components';
 
-const StCommentsArea = styled.div``;
+const StCommentsArea = styled.div`
+  background-color: #a2a2df;
+  padding: 60px;
+  width: 50vw;
+`;
 
 const Comments = ({ postId }) => {
   const [sessionId, setSessionId] = useState(null);
