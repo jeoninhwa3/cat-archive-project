@@ -2,7 +2,6 @@ import Comments from '../detail-components/Comments';
 import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const StDetail = styled.div`
