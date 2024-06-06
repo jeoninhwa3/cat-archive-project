@@ -5,13 +5,15 @@ export const MainStation = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
+  justify-content: start;
+  align-items: center;
   background-color: rgb(21, 21, 22);
   min-height: 100vh;
+  padding-top: 100px;
 `;
 export const UpperBox = styled.div`
   width: 350px;
-  margin: 4% auto auto;
+
   border: 1px solid lightgrey;
   color: gray;
   background-color: rgb(226 226 226);
@@ -19,8 +21,8 @@ export const UpperBox = styled.div`
 export const MainLogo = styled.div`
   margin: 50px auto 50px auto;
   font-weight: bold;
-  font-size: 40px;
-  color: rgb(75, 146, 155);
+  font-size: 36px;
+  color: rgb(89, 93, 94);
 `;
 
 export const InnerText = styled.input`
