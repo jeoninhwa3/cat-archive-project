@@ -39,6 +39,10 @@ const StLi = styled.li`
     height: 30px;
     border: none;
     border-radius: 10px;
+    &:hover {
+      background-color: #1c1e1d78;
+      cursor: pointer;
+    }
   }
 `;
 
