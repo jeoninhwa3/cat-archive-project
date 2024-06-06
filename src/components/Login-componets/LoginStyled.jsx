@@ -6,6 +6,8 @@ export const MainStation = styled.form`
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  background-color: rgb(21, 21, 22);
+  min-height: 100vh;
 `;
 export const UpperBox = styled.div`
   width: 350px;

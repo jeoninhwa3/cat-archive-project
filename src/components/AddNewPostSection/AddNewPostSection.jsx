@@ -11,7 +11,7 @@ const AddNewPostSection = () => {
         }}
       >
         <img src="src\assets\add_icon.png" style={{ height: '20px', opacity: '0.7' }} />
-        <AddNewPostText>새 챌린지 등록하기</AddNewPostText>
+        <AddNewPostText>새 고양이 등록하기</AddNewPostText>
       </AddNewPostBtn>
     </AddNewPostBtnContainer>
   );

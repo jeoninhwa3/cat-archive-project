@@ -71,7 +71,7 @@ const PostListSection = () => {
   return (
     <>
       <PostHeader>
-        <PostItemsTitle>챌린지 모아보기</PostItemsTitle>
+        <PostItemsTitle>고양이 모아보기</PostItemsTitle>
         <PostArrangeDropDown></PostArrangeDropDown>
       </PostHeader>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

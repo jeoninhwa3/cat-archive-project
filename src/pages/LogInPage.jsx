@@ -65,7 +65,7 @@ function LoginPage() {
   return (
     <MainStation onSubmit={handleSubmit}>
       <UpperBox>
-        <MainLogo>갓생챌린지</MainLogo>
+        <MainLogo>고양이 아카이브</MainLogo>
 
         <InnerText type="email" placeholder="이메일을 입력해주세요" value={email} onChange={handleEmailChange} />
 

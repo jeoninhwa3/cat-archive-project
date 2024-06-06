@@ -29,7 +29,7 @@ const StImg = styled.img`
 const StTit = styled.h2`
   margin-bottom: 30px;
   color: #fff;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
 `;
 const StBox = styled.div`
@@ -55,7 +55,7 @@ const MyPostList = ({ posts }) => {
 
   return (
     <div className="mypost_wrap">
-      <StTit>내 게시글 보기</StTit>
+      <StTit>내가 올린 고양이들</StTit>
       <StUl>
         {posts &&
           posts.map((el, idx) => {

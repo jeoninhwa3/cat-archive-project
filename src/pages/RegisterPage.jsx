@@ -86,7 +86,7 @@ function RegisterPage() {
   return (
     <MainStation onSubmit={handleSubmit}>
       <UpperBox>
-        <MainLogo>갓생챌린지</MainLogo>
+        <MainLogo>고양이 아카이브</MainLogo>
         <H2>깃헙으로 로그인</H2>
         <H3>구글으로 로그인</H3>
         <OrChoose>―――――― 또는 ――――――</OrChoose>

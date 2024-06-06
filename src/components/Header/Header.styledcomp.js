@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../../assets/temp_logo.png';
+import img from '../../assets/logo_white.png';
 
 export const StyledHeader = styled.header`
   display: flex;
@@ -23,17 +23,21 @@ export const StyledHeader = styled.header`
 export const LogoContainer = styled.div`
   width: calc(100% - 240px);
   display: flex;
-
+  /* background-color: blue; */
   justify-content: start;
+  align-items: center;
+  height: 100%;
 `;
 
 export const Logo = styled.div`
   position: relative;
-
+  /* background-color: red; */
   background-image: url(${img});
-  width: 70px;
-  height: 70px;
+
+  width: 93px;
   background-size: cover;
+  height: 85%;
+
   &:hover {
     cursor: pointer;
   }
