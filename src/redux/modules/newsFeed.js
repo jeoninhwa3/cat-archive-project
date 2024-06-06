@@ -4,6 +4,8 @@ import supabase from '../../supabaseClient';
 const {
   data: { user }
 } = await supabase.auth.getUser();
+// 접속한 사용자가 로그인상태라면 user가 잘 반환되고,
+// 로그인하지 않았다면 user가 잘 반환되지 않음
 
 const initialState = {
   postsArrangeType: 'latest',
@@ -20,7 +22,7 @@ const newsFeed = createSlice({
       state.postsArrangeType = action.payload.postArrageType;
     },
     SET_POSTS: (state, action) => {
-      const newArray = action.payload.map((item) => {
+      const editedTimeArray = action.payload.map((item) => {
         const inputDate = new Date(item.created_at);
         const new_date = new Intl.DateTimeFormat('ko-KR', {
           year: 'numeric',
@@ -30,7 +32,6 @@ const newsFeed = createSlice({
           minute: '2-digit',
           hour12: false
         }).format(inputDate);
-
         return {
           ...item,
           ...{
@@ -38,7 +39,7 @@ const newsFeed = createSlice({
           }
         };
       });
-      state.posts = [...newArray];
+      state.posts = [...editedTimeArray];
     },
     COUNT_POSTS: (state, action) => {
       state.postsCounter += action.payload;

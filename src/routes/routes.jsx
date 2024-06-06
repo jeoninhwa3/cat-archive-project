@@ -20,7 +20,7 @@ export const unloggedInRouter = createBrowserRouter([
   },
   {
     path: '/LogIn',
-    element: <LogInPage></LogInPage>
+    element: <Temp></Temp>
   },
   {
     path: '/myPage/:user_id',
@@ -30,7 +30,6 @@ export const unloggedInRouter = createBrowserRouter([
     path: '/createNewPost',
     element: <Temp></Temp>
   },
-
   {
     path: '/PostUpdate/:id',
     element: <Temp></Temp>
