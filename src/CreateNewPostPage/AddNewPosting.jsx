@@ -115,7 +115,6 @@ const AddNewPosting = () => {
   };
   return (
     <Container>
-
       <Header>새 게시글 작성하기</Header>
 
       <InputField

@@ -25,6 +25,9 @@ const newsFeed = createSlice({
     COUNT_POSTS: (state, action) => {
       state.postsCounter += action.payload;
     },
+    RESET_COUNT_POSTS: (state) => {
+      state.postsCounter = 0;
+    },
     SET_POSTS_COUNTER: (state, action) => {
       state.postsCounter = action.payload;
     },
@@ -34,5 +37,6 @@ const newsFeed = createSlice({
   }
 });
 
-export const { SET_IS_LOGGED_IN, SET_POST_ARRANGE_TYPE, SET_POSTS, COUNT_POSTS, SET_POSTS_COUNTER } = newsFeed.actions;
+export const { SET_IS_LOGGED_IN, SET_POST_ARRANGE_TYPE, SET_POSTS, COUNT_POSTS, RESET_COUNT_POSTS, SET_POSTS_COUNTER } =
+  newsFeed.actions;
 export default newsFeed.reducer;

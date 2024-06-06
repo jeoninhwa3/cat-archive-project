@@ -42,7 +42,7 @@ const PostListSection = () => {
         .from('posts')
         .select()
         .range(postCounter, postCounter + 2)
-        .order('created_at', { ascending: true });
+        .order('created_at', { ascending: false });
       dispatch(COUNT_POSTS(3));
       dispatch(SET_POSTS([...posts, ...data]));
     } else {
@@ -50,7 +50,7 @@ const PostListSection = () => {
         .from('posts')
         .select()
         .range(postCounter, postCounter + 2)
-        .order('created_at', { ascending: false });
+        .order('created_at', { ascending: true });
       dispatch(COUNT_POSTS(3));
       dispatch(SET_POSTS([...posts, ...data]));
     }
