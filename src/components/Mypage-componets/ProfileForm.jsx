@@ -69,22 +69,21 @@ const ProfileForm = () => {
   }
 
   // 프로필 사진 변경
+
   const addHandler = async () => {
     const { data, error } = await supabase
-      .from('user')
-      .update({
-        url
-      })
+      .from('users') // 'user' 대신 'users'로 변경
+      .update({ url }) 
       .eq('id', id)
-      .select();
+      .single(); // 단일 객체를 가져오기 위해 'single()' 추가
+
     if (error) {
       console.log(error);
     } else {
       console.log(data);
-      alert('글 수정 완료');
+      alert('프로필 수정 완료');
     }
   };
-  console.log(url);
   return (
     <StProfileBox>
       <StImg src={url} alt="미리보기 이미지" />
