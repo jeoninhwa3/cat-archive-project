@@ -59,12 +59,12 @@ const router = createBrowserRouter([
       {
         path: '/PostUpdate/:id',
         element: <PostUpdate></PostUpdate>
+      },
+      {
+        path: '/post/:post_id',
+        element: <PostDetailPage></PostDetailPage>
       }
     ]
-  },
-  {
-    path: '/post/:post_id',
-    element: <PostDetailPage></PostDetailPage>
   }
 ]);
 

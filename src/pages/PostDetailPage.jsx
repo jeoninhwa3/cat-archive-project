@@ -1,4 +1,3 @@
-import React from 'react';
 import Comments from '../detail-components/Comments';
 import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
@@ -13,8 +12,8 @@ const StDetail = styled.div`
   align-items: center;
   text-align: center;
   width: 87vw;
-  height: 100vh;
   margin: 0 auto;
+  padding: 50px;
 `;
 
 const PostDetailPage = () => {
