@@ -7,25 +7,27 @@
 
 - 프로젝트 명 : 갓생챌린지
 - 소개
-  - 한 줄 정리 : 도전하고 싶은 갓생챌린지를 올리고 갓생메이트를 찾는 커뮤니티
-  - 내용 :
-  - 갓생챌린지는 갓생러들이 원하는 챌린지를 공유하고 뉴스피드 형식으로 탐색, 참여 할 수 있는 공간입니다.
 
-<br>
+  - 한 줄 정리 : 도전하고 싶은 갓생챌린지를 올리고 갓생메이트를 찾는 커뮤니티
+
+  - 내용 :갓생챌린지는 갓생러들이 원하는 챌린지를 공유하고 뉴스피드 형식으로 탐색, 참여 할 수 있는 공간입니다.
+
+  - 프로젝트 기간
+    2024.05.31 ~ 2024.06.07
+
+  <br>
 
 ## 팀원
 
-| 개발자 | GITHUB                            |
-| ------ | --------------------------------- |
-| 이혜진 | https://github.com/hyejinleeee    |
-| 전인화 | https://github.com/jeoninhwa3     |
-| 강윤서 | https://github.com/dbsjt          |
-| 윤기준 | https://github.com/sobbingtofu    |
+| 이혜진 | https://github.com/hyejinleeee |
+| 전인화 | https://github.com/jeoninhwa3 |
+| 강윤서 | https://github.com/dbsjt |
+| 윤기준 | https://github.com/sobbingtofu |
 | 양대우 | https://github.com/DAEWOOYANG0310 |
 
 <br>
 
-## 필수구현사항
+## ✅ 필수구현사항
 
     ✅ 로그인, 회원가입 (Authentication에서 제공하는 api 사용)
 
@@ -59,11 +61,11 @@
 
 <br>
 
-### 💡 주요 기능 소개
+### 주요 기능 소개
 
 #### 1. 회원가입
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1msIHC.img"alt="접근제한" width="680" height="350">
 
 #### 2. 메인페이지
 
@@ -81,10 +83,10 @@
 
 <img src= ""alt="접근제한" width="680" height="350">
 
-#### 6. 마이프로필 수정/삭제
+#### 6. 마이프로필
 
 <img src= ""alt="접근제한" width="680" height="350">
 
-#### 6. 마이프로필 수정/삭제
+#### 6. 마이프로필/사진 수정/삭제
 
 <img src= ""alt="접근제한" width="680" height="350">
