@@ -68,7 +68,6 @@ const ProfileForm = ({ user }) => {
     'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg?t=2024-06-06T12%3A50%3A21.111Z';
   const [url, setUrl] = useState();
   const [isToggled, setIsToggled] = useState(true);
-  console.log(user);
 
   // 테이블에 저장된 url 가져오기
   async function getUrl() {
@@ -113,7 +112,7 @@ const ProfileForm = ({ user }) => {
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
-  // console.log(url);
+
   return (
     <StProfileBox>
       <StImgBox>

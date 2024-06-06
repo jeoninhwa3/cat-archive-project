@@ -48,13 +48,13 @@ const StButton = styled.button`
 const PostUpdate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log();
 
   const [post, setPost] = useState();
   const [title, settitle] = useState();
   const [content, setContent] = useState();
   const [url, setUrl] = useState('');
 
+  // post 데이터 추가
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase.from('posts').select().eq('id', id);
@@ -65,6 +65,7 @@ const PostUpdate = () => {
     fetchData();
   }, []);
 
+  // supabase에 이미지 업로드, 이미지 url 가져오기
   const handleUrlChange = async (files) => {
     const [file] = files;
     if (!file) {
@@ -73,7 +74,6 @@ const PostUpdate = () => {
     const { data } = await supabase.storage.from('posts').upload(`avatar_${Date.now()}.png`, file);
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/posts/${data.path}`);
   };
-  console.log(url);
 
   // 게시글 수정
   const editPost = async () => {
