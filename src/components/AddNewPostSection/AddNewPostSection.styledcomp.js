@@ -7,7 +7,7 @@ export const AddNewPostBtnContainer = styled.div`
 
   justify-content: center;
   align-items: center;
-  height: 120px;
+  height: 150px;
 `;
 
 export const AddNewPostBtn = styled.div`
@@ -16,8 +16,8 @@ export const AddNewPostBtn = styled.div`
   color: #bfbfbf;
   justify-content: center;
   align-items: center;
-  height: 60%;
-  padding: 0px 240px;
+  height: 80%;
+  padding: 5px 360px;
   border-radius: 15px;
   border: 3pt dashed;
   min-width: 10px;
