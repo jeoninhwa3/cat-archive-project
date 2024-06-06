@@ -9,7 +9,15 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 20px;
 `;
+const Header = styled.header`
+  width: 100%;
 
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 900;
+`;
 const InputField = styled.input`
   display: block;
   width: 100%;
@@ -26,6 +34,15 @@ const InputContent = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+`;
+const StButton = styled.button`
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
 `;
 
 const PostUpdate = () => {
@@ -88,6 +105,7 @@ const PostUpdate = () => {
 
   return (
     <Container>
+      <Header>게시글 수정하기</Header>
       <InputField
         type="text"
         value={title}
@@ -102,20 +120,20 @@ const PostUpdate = () => {
       />
 
       <InputField id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
-      <button onClick={editPost} type="submit">
+      <StButton onClick={editPost} type="submit">
         수정
-      </button>
-      <button onClick={deletePost} type="submit">
+      </StButton>
+      <StButton onClick={deletePost} type="submit">
         삭제
-      </button>
-      <button
+      </StButton>
+      <StButton
         onClick={() => {
           navigate(-1);
         }}
         type="submit"
       >
         뒤로가기
-      </button>
+      </StButton>
     </Container>
   );
 };
