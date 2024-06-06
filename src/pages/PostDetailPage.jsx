@@ -3,7 +3,6 @@ import PostContents from '../detail-components/PostContents';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import logo from '../assets/temp_logo.png';
 
 const StDetail = styled.div`
   background-color: white;
@@ -27,7 +26,6 @@ const PostDetailPage = () => {
   return (
     <>
       <StDetail>
-        <img src={logo} alt="홈" onClick={handleClick} />
         <PostContents postId={post_id} />
         <Comments postId={post_id} />
       </StDetail>
