@@ -9,26 +9,34 @@ const CommentsForm = ({ sessionId, postId }) => {
   // 댓글 생성(C) 댓글테이블에 추가
   const createComment = async (e) => {
     e.preventDefault();
-    // 기본 제출 동작 막기
+    try {
+      let { data: users, error: userError } = await supabase.from('users').select('*').eq('id', sessionId);
+      if (userError) {
+        console.error('사용자 조회 오류:', userError);
+        return;
+      }
 
-    //유저 이름이랑 프로필 이미지 찾기
-    let { data: users } = await supabase.from('users').select('*').eq('id', sessionId); // sessionId로 유저 정보 가져오기
-    const userName = users[0].name;
-    const usersImg = users[0].url;
+      const userName = users[0].name;
+      const usersImg = users[0].url;
 
-    //댓글테이블에 인풋 정보 추가
-    await supabase
-      .from('comments')
-      .insert({
+      const { data: commentData, error: insertError } = await supabase.from('comments').insert({
         content: inputComments,
         post_id: postId,
         user_id: sessionId,
         name: userName,
         img: usersImg
-      })
-      .select('*');
+      });
 
-    setInputComments('');
+      if (insertError) {
+        console.error('댓글 삽입 오류:', insertError);
+        return;
+      }
+
+      console.log('삽입된 댓글:', commentData);
+      setInputComments('');
+    } catch (error) {
+      console.error('댓글 생성 중 예외 발생:', error);
+    }
   };
 
   return (
