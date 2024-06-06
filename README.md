@@ -67,7 +67,7 @@
 
 #### 1. 회원가입
 
-<img src= "https://github.com/hyejinleeee/B05/issues/18#issue-2337208982"alt="접근제한" width="680" height="350">
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/eb2a95db-19f3-4fb9-9110-9cac81e5b134" width="680" height="350">
 
 #### 2. 메인페이지
 
