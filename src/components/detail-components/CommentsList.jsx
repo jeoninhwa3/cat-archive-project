@@ -4,14 +4,9 @@ import styled from 'styled-components';
 import defaultImg from '../../assets/defaultImg.jpg';
 
 const StComment = styled.div`
-  align-items: flex-start;
-  justify-content: flex-start;
   padding-left: 60px;
-
   ul {
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
   }
 
   img {
