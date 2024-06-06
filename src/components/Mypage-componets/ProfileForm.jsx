@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import supabase from '../../supabaseClient';
-// import { useDispatch } from 'react-redux';
 
 // styled-components
 const StProfileBox = styled.div`
@@ -40,13 +39,12 @@ const StInput = styled.input`
 `;
 
 const ProfileForm = ({ user }) => {
-  console.log(user);
-  // const dispatch = useDispatch();
-  // const [user, setUser] = useState();
+  // 기본 프로필 사진
   const [url, setUrl] = useState(
     'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg'
   );
 
+  // supabase에 이미지 업로드, 이미지 url 가져오기
   const handleFileInputChange = async (files) => {
     const [file] = files;
 
@@ -58,8 +56,8 @@ const ProfileForm = ({ user }) => {
 
     setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/${data.path}`);
   };
-  console.log(url);
-  // 프로필 사진 변경
+
+  // 프로필 사진 업데이트
   const addHandler = async () => {
     const { data, error } = await supabase
       .from('users')
@@ -74,7 +72,7 @@ const ProfileForm = ({ user }) => {
       console.log(data);
     }
   };
-  console.log(url);
+
   return (
     <StProfileBox>
       <StImgBox>

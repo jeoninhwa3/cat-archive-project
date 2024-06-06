@@ -1,8 +1,5 @@
-// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import supabase from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
-// import supabase from '../supabaseClient';
 
 // styled-components
 const StUl = styled.ul`
@@ -54,7 +51,7 @@ const MyPostList = ({ posts }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="mypost_wrap">
+    <div>
       <StTit>내가 올린 고양이들</StTit>
       <StUl>
         {posts &&
