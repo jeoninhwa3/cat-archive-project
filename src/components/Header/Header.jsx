@@ -17,13 +17,13 @@ const Header = () => {
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
 
-  async function getPosts() {
+  async function getUserId() {
     const { data: getData } = await supabase.auth.getSession();
     if (getData.session !== null) {
       setUserId(getData.session.user.id);
     }
   }
-  getPosts();
+  getUserId();
 
   const handleHeaderBtnClick = (event) => {
     if (event.target.id === 'to-profile-btn') {

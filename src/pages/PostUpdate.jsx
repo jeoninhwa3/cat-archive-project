@@ -48,6 +48,7 @@ const StButton = styled.button`
 const PostUpdate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log();
 
   const [post, setPost] = useState();
   const [title, settitle] = useState();
@@ -63,8 +64,6 @@ const PostUpdate = () => {
     };
     fetchData();
   }, []);
-
-  console.log(post);
 
   const handleUrlChange = async (files) => {
     const [file] = files;

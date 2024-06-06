@@ -56,7 +56,7 @@ const StTitle = styled.h3`
   color: #ddd;
 `;
 const StContent = styled.p`
-  width: 170px;
+  width: 90;
   font-size: 16px;
   color: #ddd;
   display: -webkit-box;

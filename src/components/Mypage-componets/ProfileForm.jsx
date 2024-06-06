@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import supabase from '../../supabaseClient';
 
@@ -64,11 +64,22 @@ const StSaveBtn = styled.button`
 `;
 
 const ProfileForm = ({ user }) => {
-  // 기본 프로필 사진
-  const [url, setUrl] = useState(
-    'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg'
-  );
+  const defaultImg =
+    'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg?t=2024-06-06T12%3A50%3A21.111Z';
+  const [url, setUrl] = useState();
   const [isToggled, setIsToggled] = useState(true);
+  console.log(user);
+
+  // 테이블에 저장된 url 가져오기
+  async function getUrl() {
+    if (!user) return; // user가 정의되지 않은 경우 빠르게 종료
+    const { data: getData } = await supabase.from('users').select().eq('id', user.id);
+    setUrl(getData[0].url);
+  }
+
+  useEffect(() => {
+    getUrl();
+  }, [user]);
 
   // supabase에 이미지 업로드, 이미지 url 가져오기
   const handleFileInputChange = async (files) => {
@@ -102,11 +113,11 @@ const ProfileForm = ({ user }) => {
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
-
+  // console.log(url);
   return (
     <StProfileBox>
       <StImgBox>
-        <StImg src={url} alt="프로필" />
+        <StImg src={url ? url : defaultImg} alt="프로필" />
         <StIcon className="material-symbols-outlined" onClick={handleToggle}>
           edit
         </StIcon>
