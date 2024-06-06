@@ -41,6 +41,7 @@ const PostContents = ({ postId }) => {
   const [post, setPost] = useState({});
   const [user, setUser] = useState({});
   const [formattedDate, setFormattedDate] = useState('');
+  const defaultImg = 'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg';
 
   useEffect(() => {
     const fetchPostData = async () => {
@@ -74,7 +75,7 @@ const PostContents = ({ postId }) => {
     <>
       <StTitle>{post.title}</StTitle>
       <StUser>
-        <img src={user.url} alt="유저사진" />
+        <img src={user.url ? user.url : defaultImg} alt="유저사진" />
         <p>{user.name}</p>
         <span>{formattedDate}</span>
       </StUser>

@@ -23,6 +23,7 @@ const StComments = styled.div`
 `;
 
 const CommentsList = ({ postId, sessionId }) => {
+  const defaultImg = 'https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/default-profile.jpg';
   const [comments, setComments] = useState([]);
 
   // postId에 해당하는 댓글 가져오기
@@ -77,7 +78,7 @@ const CommentsList = ({ postId, sessionId }) => {
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
-            <img src={comment.img} alt="유저사진" />
+            <img src={comment.img ? comment.img : defaultImg} alt="유저사진" />
             <p>{comment.name}</p>
             <p>{comment.content}</p>
             <button onClick={() => handleUpdate(comment)}>수정</button>
