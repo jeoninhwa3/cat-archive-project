@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
-import supabase from '../supabaseClient';
+import supabase from '../../supabaseClient';
 
 const StForm = styled.form`
   padding: 20px;
