@@ -5,6 +5,8 @@ import CommentsList from './CommentsList';
 import styled from 'styled-components';
 
 const StCommentsArea = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 60px;
   width: 50vw;
 `;

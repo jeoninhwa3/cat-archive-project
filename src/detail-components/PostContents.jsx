@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import defaultImg from '../assets/defaultImg.jpg';
@@ -31,11 +31,13 @@ const StUser = styled.div`
 `;
 
 const StContent = styled.div`
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
   align-items: center;
   width: 80%;
   padding: 20px;
-  margin-bottom: 240px;
+  /* margin-bottom: 240px; */
   img {
     margin-top: 40px;
     margin-bottom: 10px;
@@ -91,7 +93,7 @@ const PostContents = ({ postId }) => {
 
       <StContent>
         <hr />
-        {post.url && <img src={post.url} alt="게시글 이미지" />}
+        {post.url && <img src={post.url} style={{ width: '80%', height: '80%' }} alt="게시글 이미지" />}
         <p>{post.content}</p>
       </StContent>
     </>

@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import defaultImg from '../assets/defaultImg.jpg';
 
 const StComment = styled.div`
+  display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
-  padding-left: 60px;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
 
   ul {
+    width: 40vw;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
   }
 
@@ -24,7 +28,7 @@ const StComment = styled.div`
 `;
 
 const StLi = styled.li`
-  width: 500px;
+  width: 40vw;
   height: 70px;
   display: flex;
   gap: 10px;
@@ -111,7 +115,7 @@ const CommentsList = ({ postId, sessionId }) => {
               <img src={comment.img ? comment.img : defaultImg} alt="유저사진" />
               <p>{comment.name}</p>
             </div>
-            <p>{comment.content}</p>
+            <p style={{ width: '25vw', display: 'flex', textAlign: 'start', marginLeft: '5px' }}>{comment.content}</p>
             <StBtnDiv>
               <button onClick={() => handleUpdate(comment)}>수정</button>
               <button onClick={() => handleDelete(comment)}>삭제</button>
