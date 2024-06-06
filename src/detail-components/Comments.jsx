@@ -22,7 +22,7 @@ const Comments = ({ postId }) => {
       }
     };
 
-    fetchSessionId(); // sessionId를 인자로 전달할 필요 없음
+    fetchSessionId();
   }, []); // 빈 의존성 배열을 사용하여 한 번만 실행되도록 함
 
   console.log(sessionId);

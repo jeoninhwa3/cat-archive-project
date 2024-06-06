@@ -30,7 +30,7 @@ const PostDetailPage = () => {
       <StDetail>
         <img src={logo} alt="홈" onClick={handleClick} />
         <PostContents postId={post_id} />
-        {/* <Comments postId={post_id} /> */}
+        <Comments postId={post_id} />
       </StDetail>
     </>
   );
