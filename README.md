@@ -67,28 +67,29 @@
 
 #### 1. 회원가입
 
-<img src= "https://github.com/hyejinleeee/B05/assets/161686758/eb2a95db-19f3-4fb9-9110-9cac81e5b134" width="680" height="350">
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/5dc20a19-a954-49bf-b18d-d970fdba4d3d" width="680" height="350">
 
 #### 2. 메인페이지
 
-<img src= "https://github.com/hyejinleeee/B05/issues/19#issue-2337209732"alt="접근제한" width="680" height="350">
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/c30e009c-21d7-4a8c-8c00-9bcc7c98bc37
+" width="680" height="350">
 
 #### 3. 게시물 생성페이지
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "" width="680" height="350">
 
 #### 4. 댓글 작성 기능
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "" width="680" height="350">
 
 #### 5. 댓글 수정/삭제
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "" width="680" height="350">
 
 #### 6. 마이프로필
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "" width="680" height="350">
 
 #### 6. 마이프로필/사진 수정/삭제
 
-<img src= ""alt="접근제한" width="680" height="350">
+<img src= "" width="680" height="350">
