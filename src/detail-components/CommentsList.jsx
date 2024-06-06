@@ -33,8 +33,6 @@ const StLi = styled.li`
   border-bottom: 1px solid #94999d;
   align-items: center;
   justify-content: space-between;
-  /* justify-content: space-around;
-  justify-content: space-evenly; */
 
   button {
     width: 50px;

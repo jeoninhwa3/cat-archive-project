@@ -44,11 +44,12 @@ const CommentsForm = ({ sessionId, postId }) => {
   const createComment = async (e) => {
     e.preventDefault();
 
+    //로그인한 유저의 이름이랑 프로필 이미지 찾기
     let { data: users } = await supabase.from('users').select('*').eq('id', sessionId);
-
     const userName = users[0].name;
     const usersImg = users[0].url;
 
+    //댓글테이블에 데이터 추가
     await supabase.from('comments').insert({
       content: inputComments,
       post_id: postId,

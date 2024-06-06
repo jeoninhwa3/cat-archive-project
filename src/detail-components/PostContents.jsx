@@ -82,6 +82,7 @@ const PostContents = ({ postId }) => {
   return (
     <>
       <StTitle>{post.title}</StTitle>
+
       <StUser>
         <img src={user.url ? user.url : defaultImg} alt="유저사진" />
         <p>{user.name}</p>
