@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import supabase from '../supabaseClient';
+import supabase from '../../supabaseClient';
 import CommentsForm from './CommentsForm';
 import CommentsList from './CommentsList';
 import styled from 'styled-components';
