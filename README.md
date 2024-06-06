@@ -19,6 +19,7 @@
 
 ## 팀원
 
+---|---|
 | 이혜진 | https://github.com/hyejinleeee |
 | 전인화 | https://github.com/jeoninhwa3 |
 | 강윤서 | https://github.com/dbsjt |
