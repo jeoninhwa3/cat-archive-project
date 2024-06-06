@@ -17,6 +17,7 @@ export const StyledHeader = styled.header`
   right: 0;
   z-index: 100;
   overflow: overlay;
+  min-width: 300px;
 `;
 
 export const LogoContainer = styled.div`

@@ -74,32 +74,36 @@ const PostListSection = () => {
         <PostItemsTitle>챌린지 모아보기</PostItemsTitle>
         <PostArrangeDropDown></PostArrangeDropDown>
       </PostHeader>
-
-      <PostItemContainer>
-        {posts &&
-          posts.map((post) => (
-            <PostItem
-              onClick={() => {
-                handleClickPostItem(post.id);
-              }}
-              key={post.id}
-            >
-              <PostImg $imgUrl={post.url ? `${post.url}` : `../../assets/temp_logo.png`}></PostImg>
-              <PostTextSection>
-                <PostTitle>{post.title}</PostTitle>
-                <PostContent>{post.content}</PostContent>
-                <PostTime>
-                  {` ${post.created_at.slice(0, 10)} ${post.created_at.slice(11, 13)}:${post.created_at.slice(14, 16)}`}
-                </PostTime>
-              </PostTextSection>
-            </PostItem>
-          ))}
-        <div
-          id="observer"
-          style={{ marginTop: '100px', height: '20px', color: 'white' }}
-          ref={scrollLoadTargetRef}
-        ></div>
-      </PostItemContainer>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <PostItemContainer>
+          {posts &&
+            posts.map((post) => (
+              <PostItem
+                onClick={() => {
+                  handleClickPostItem(post.id);
+                }}
+                key={post.id}
+              >
+                <PostImg $imgUrl={post.url ? `${post.url}` : `../../assets/temp_logo.png`}></PostImg>
+                <PostTextSection>
+                  <PostTitle>{post.title}</PostTitle>
+                  <PostContent>{post.content}</PostContent>
+                  <PostTime>
+                    {` ${post.created_at.slice(0, 10)} ${post.created_at.slice(11, 13)}:${post.created_at.slice(
+                      14,
+                      16
+                    )}`}
+                  </PostTime>
+                </PostTextSection>
+              </PostItem>
+            ))}
+          <div
+            id="observer"
+            style={{ marginTop: '100px', height: '20px', color: 'white' }}
+            ref={scrollLoadTargetRef}
+          ></div>
+        </PostItemContainer>
+      </div>
     </>
   );
 };

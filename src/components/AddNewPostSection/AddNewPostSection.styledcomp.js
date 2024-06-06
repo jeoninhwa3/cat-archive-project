@@ -20,7 +20,7 @@ export const AddNewPostBtn = styled.div`
   padding: 0px 240px;
   border-radius: 15px;
   border: 3pt dashed;
-
+  min-width: 10px;
   border-color: #bfbfbf;
 
   transition: 0.3s;
@@ -29,4 +29,8 @@ export const AddNewPostBtn = styled.div`
     cursor: pointer;
     transition: 0.3s;
   }
+`;
+
+export const AddNewPostText = styled.p`
+  min-width: 90px;
 `;

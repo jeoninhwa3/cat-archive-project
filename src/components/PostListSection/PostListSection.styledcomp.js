@@ -15,14 +15,26 @@ export const PostItemsTitle = styled.h1`
   color: white;
   font-weight: 900;
   font-size: 1.5rem;
+  min-width: 100px;
 `;
 
 export const PostItemContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+
   row-gap: 40px;
   column-gap: 40px;
-  padding: 20px 120px;
+  margin: 40px 0px;
+  width: 87.5%;
+
+  @media (min-width: 1400px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (max-width: 1400px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 `;
 
 export const PostItem = styled.div`
@@ -36,6 +48,7 @@ export const PostItem = styled.div`
   align-items: center;
   gap: 10px;
   border-radius: 15px;
+  width: 100%;
 `;
 
 export const PostImg = styled.div`

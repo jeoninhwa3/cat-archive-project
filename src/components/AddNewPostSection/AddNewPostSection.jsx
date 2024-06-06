@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { AddNewPostBtnContainer, AddNewPostBtn } from './AddNewPostSection.styledcomp';
+import { AddNewPostBtnContainer, AddNewPostBtn, AddNewPostText } from './AddNewPostSection.styledcomp';
 
 const AddNewPostSection = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const AddNewPostSection = () => {
         }}
       >
         <img src="src\assets\add_icon.png" style={{ height: '20px', opacity: '0.7' }} />
-        <p>새 챌린지 등록하기</p>
+        <AddNewPostText>새 챌린지 등록하기</AddNewPostText>
       </AddNewPostBtn>
     </AddNewPostBtnContainer>
   );
