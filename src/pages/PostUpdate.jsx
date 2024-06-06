@@ -61,6 +61,7 @@ const PostUpdate = () => {
       setPost(data[0]);
       settitle(data[0].title);
       setContent(data[0].content);
+      setUrl(data[0].url);
     };
     fetchData();
   }, []);
@@ -70,9 +71,10 @@ const PostUpdate = () => {
     const [file] = files;
     if (!file) {
       return;
+    } else {
+      const { data } = await supabase.storage.from('url').upload(`url_${Date.now()}.png`, file);
+      setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
     }
-    const { data } = await supabase.storage.from('posts').upload(`avatar_${Date.now()}.png`, file);
-    setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/posts/${data.path}`);
   };
 
   // 게시글 수정
@@ -89,10 +91,10 @@ const PostUpdate = () => {
     if (error) {
       console.log(error);
     } else {
-      console.log(data);
       alert('글 수정 완료');
       navigate(-1);
     }
+    console.log(url);
   };
 
   // 게시글 삭제
@@ -118,7 +120,13 @@ const PostUpdate = () => {
         placeholder="내용을 입력하세요"
       />
 
-      <InputField id="file-upload" type="file" onChange={(e) => handleUrlChange(e.target.files)} />
+      <InputField
+        id="file-upload"
+        type="file"
+        onChange={(e) => {
+          return handleUrlChange(e.target.files);
+        }}
+      />
       <StButton onClick={editPost} type="submit">
         수정
       </StButton>
