@@ -40,7 +40,7 @@ const PostUpdate = () => {
   console.log(title);
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await supabase.from('users').select().eq('id', id);
+      const { data, error } = await supabase.from('posts').select().eq('id', id);
       setPost(data[0]);
       settitle(data[0].title);
       setContent(data[0].content);
