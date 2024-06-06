@@ -37,10 +37,9 @@ const PostUpdate = () => {
   const [content, setContent] = useState();
   const [url, setUrl] = useState('');
 
-  console.log(title);
   useEffect(() => {
     const fetchData = async () => {
-      const { data, error } = await supabase.from('users').select().eq('id', id);
+      const { data, error } = await supabase.from('posts').select().eq('id', id);
       setPost(data[0]);
       settitle(data[0].title);
       setContent(data[0].content);
@@ -55,8 +54,8 @@ const PostUpdate = () => {
     if (!file) {
       return;
     }
-    const { data } = await supabase.storage.from('users').upload(`avatar_${Date.now()}.png`, file);
-    setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/users/${data.path}`);
+    const { data } = await supabase.storage.from('posts').upload(`avatar_${Date.now()}.png`, file);
+    setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/posts/${data.path}`);
   };
   console.log(url);
 
@@ -97,7 +96,6 @@ const PostUpdate = () => {
       />
       <InputContent
         type="text"
-        accept="image/png, image/jpg"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="내용을 입력하세요"
