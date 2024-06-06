@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import supabase from '../../supabaseClient';
@@ -8,6 +7,7 @@ const StForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 `;
 
 const StTextArea = styled.textarea`
@@ -30,7 +30,6 @@ const StTextArea = styled.textarea`
 
 const StButton = styled.button`
   margin-top: 17px;
-  margin-left: 460px;
   width: 50px;
   height: 30px;
   border: none;
@@ -82,7 +81,9 @@ const CommentsForm = ({ sessionId, postId }) => {
           value={inputComments}
           onChange={(e) => setInputComments(e.target.value)}
         />
-        <StButton type="submit">등록</StButton>
+        <div style={{ display: 'flex', width: '40vw', justifyContent: 'end', alignContent: 'end' }}>
+          <StButton type="submit">등록</StButton>
+        </div>
       </StForm>
     </>
   );
