@@ -15,17 +15,14 @@ const StContainer = styled.div`
 const UserProfilePage = () => {
   const [posts, setPosts] = useState(null);
   const [user, setUser] = useState(null);
-  const [url, setUrl] = useState(null);
 
   // 내가 올린 게시글 가져오기
   async function getPosts() {
     const { data: getData } = await supabase.auth.getSession();
     const userId = getData.session.user.id;
     const { data: myPost } = await supabase.from('posts').select().eq('user_id', userId);
-    const { data: myUrl } = await supabase.from('users').select().eq('id', userId);
 
     setPosts(myPost);
-    setUrl(myUrl);
   }
 
   // 유저 정보 저장, 게시글 가져오는 함수 실행
@@ -44,7 +41,7 @@ const UserProfilePage = () => {
 
   return (
     <StContainer>
-      <ProfileForm user={user} url={url} />
+      <ProfileForm user={user} />
       <MyPostList posts={posts} />
     </StContainer>
   );

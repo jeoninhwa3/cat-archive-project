@@ -13,6 +13,7 @@ const StUl = styled.ul`
 `;
 const StLi = styled.li`
   display: flex;
+  min-width: 600px;
   height: 150px;
   padding: 20px;
   border-radius: 20px;
