@@ -67,8 +67,7 @@
 
 #### 1. 회원가입/로그인
 
-<img src= "https://github.com/hyejinleeee/B05/assets/161686758/7915a6e3-cc57-42ed-8b4c-958d56c43f54
-" width="680" height="350">
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/7915a6e3-cc57-42ed-8b4c-958d56c43f54" width="680" height="350">
 
 #### 2. 메인페이지
 
