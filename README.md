@@ -1,9 +1,87 @@
-# React + Vite
+# 프로젝트 소개
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```
+안녕하세요 🍀I 사이에 피어난 🌹E 조 입니다.
 
-Currently, two official plugins are available:
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# B05
+- 프로젝트 명 : 갓생챌린지
+- 소개
+
+  - 한 줄 정리 : 도전하고 싶은 갓생챌린지를 올리고 갓생메이트를 찾는 커뮤니티
+
+  - 내용 :갓생챌린지는 갓생러들이 원하는 챌린지를 공유하고 뉴스피드 형식으로 탐색, 참여 할 수 있는 공간입니다.
+
+  - 프로젝트 기간
+    2024.05.31 ~ 2024.06.07
+
+  <br>
+
+## 팀원
+
+| 개발자 | GITHUB                            |
+| ------ | --------------------------------- |
+| 이혜진 | https://github.com/hyejinleeee    |
+| 전인화 | https://github.com/jeoninhwa3     |
+| 강윤서 | https://github.com/dbsjt          |
+| 윤기준 | https://github.com/sobbingtofu    |
+| 양대우 | https://github.com/DAEWOOYANG0310 |
+
+<br>
+
+## ✅ 필수구현사항
+
+    ✅ 로그인, 회원가입 (Authentication에서 제공하는 api 사용)
+
+    ✅ 내 게시물 보기 (Authentication에서 제공하는 uid 이용)✅ 댓글
+
+    ✅ 프로필 수정 기능
+
+    ✅ 마이페이지
+
+    ✅ supabase api를 이용하여 CUD 핸들링 구현하고 R(조회)해서 화면 이동
+
+    ✅ supabase Storage로 이미지 업로드와 다운로드 url 이미지 핸들링
+
+<br>
+
+## Github Rules
+
+| 작업 타입   | 작업내용                       |
+| ----------- | ------------------------------ |
+| ✨ update   | 해당 파일에 새로운 기능이 생김 |
+| 🎉 add      | 없던 파일을 생성함, 초기 세팅  |
+| 🐛 bugfix   | 버그 수정                      |
+| ♻️ refactor | 코드 리팩토링                  |
+| 🩹 fix      | 코드 수정                      |
+| 🚚 move     | 파일 옮김/정리                 |
+| 🔥 del      | 기능/파일을 삭제               |
+| 🍻 test     | 테스트 코드를 작성             |
+| 💄 style    | css                            |
+| 🙈 gitfix   | gitignore 수정                 |
+| 🔨script    | package.json 변경(npm 설치 등) |
+
+<br>
+
+### 주요 기능 소개
+
+#### 1. 회원가입/로그인
+
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/7915a6e3-cc57-42ed-8b4c-958d56c43f54
+" width="680" height="350">
+
+#### 2. 메인페이지
+
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/2c726939-f965-48fc-89c3-878d28b90b71" width="680" height="350">
+
+#### 3. 게시물 생성페이지
+
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/1d3dd710-3664-4cdd-874c-4c73ac8aa278" width="680" height="350">
+
+#### 4. 상세페이지/댓글수정/삭제 기능
+
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/3c8124aa-2ac5-4827-86f1-115b8dae5c5d" width="680" height="350">
+
+#### 6. 마이프로필/프로필 변경 및 수정삭제/ 게시물 수정삭제
+
+<img src= "https://github.com/hyejinleeee/B05/assets/161686758/ee8dc2f5-8c36-440b-aa06-cd95738c3a7f" width="680" height="350">
