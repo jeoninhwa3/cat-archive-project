@@ -20,7 +20,11 @@ const UserProfilePage = () => {
   async function getPosts() {
     const { data: getData } = await supabase.auth.getSession();
     const userId = getData.session.user.id;
-    const { data: myPost } = await supabase.from('posts').select().eq('user_id', userId);
+    const { data: myPost } = await supabase
+      .from('posts')
+      .select()
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
 
     setPosts(myPost);
   }
