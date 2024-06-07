@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import supabase from '../supabaseClient';
-
+import './login.css';
 import {
   MainStation,
   UpperBox,
@@ -11,8 +11,7 @@ import {
   H2,
   H3,
   H4,
-  UnderBox,
-  LinkText
+  UnderBox
 } from '../components/Login-componets/LoginStyled';
 import { useDispatch } from 'react-redux';
 import { SET_IS_LOGGED_IN } from '../redux/modules/newsFeed';
@@ -104,7 +103,9 @@ function LoginPage() {
       </UpperBox>
 
       <UnderBox>
-        <LinkText to="/Register">새 계정 만들기</LinkText>
+        <Link className="link" to="/Register">
+          새 계정 만들기
+        </Link>
       </UnderBox>
     </MainStation>
   );

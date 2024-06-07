@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import supabase from '../supabaseClient';
 import {
   MainStation,
@@ -10,11 +10,12 @@ import {
   H2,
   H3,
   OrChoose,
-  UnderBox,
-  LinkText
+  UnderBox
 } from '../components/Login-componets/LoginStyled';
 import { useDispatch } from 'react-redux';
 import { SET_IS_LOGGED_IN } from '../redux/modules/newsFeed';
+import './login.css';
+
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -103,7 +104,9 @@ function RegisterPage() {
       </UpperBox>
       <UnderBox>
         계정이 있으신가요?
-        <LinkText to="/logIn">로그인</LinkText>
+        <Link className="link" to="/logIn">
+          로그인
+        </Link>
       </UnderBox>
     </MainStation>
   );

@@ -85,11 +85,11 @@ export const UnderBox = styled.div`
   background-color: rgb(226 226 226);
 `;
 
-export const LinkText = styled(Link)`
-  text-decoration: none;
-  color: rgb(30, 144, 255);
-  font-weight: bold;
-  &:hover {
-    text-decoration: underline; // 마우스를 올렸을 때 밑줄 추가
-  }
-`;
+// export const LinkText = styled(Link)`
+//   text-decoration: none;
+//   color: rgb(30, 144, 255);
+//   font-weight: bold;
+//   &:hover {
+//     text-decoration: underline; // 마우스를 올렸을 때 밑줄 추가
+//   }
+// `;
