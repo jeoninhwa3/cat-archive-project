@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { RESET_COUNT_POSTS, SET_POSTS } from '../redux/modules/newsFeed';
 
 // styled-component
 const Container = styled.div`
@@ -76,7 +78,7 @@ const PostUpdate = () => {
       setUrl(`https://uvvzyeuostwqkcufncyy.supabase.co/storage/v1/object/public/url/${data.path}`);
     }
   };
-
+  const dispatch = useDispatch();
   // 게시글 수정
   const editPost = async () => {
     const { data, error } = await supabase
@@ -92,6 +94,8 @@ const PostUpdate = () => {
       console.log(error);
     } else {
       alert('글 수정 완료');
+      dispatch(RESET_COUNT_POSTS());
+      dispatch(SET_POSTS([]));
       navigate(-1);
     }
     console.log(url);
@@ -101,6 +105,8 @@ const PostUpdate = () => {
   const deletePost = async () => {
     const { data } = await supabase.from('posts').delete().eq('id', id).select();
     alert('글 삭제 완료');
+    dispatch(RESET_COUNT_POSTS());
+    dispatch(SET_POSTS([]));
     navigate(-1);
   };
 
