@@ -49,6 +49,9 @@ export const PostItem = styled.div`
   gap: 10px;
   border-radius: 15px;
   width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const PostImg = styled.div`
