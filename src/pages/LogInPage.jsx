@@ -67,14 +67,14 @@ function LoginPage() {
       dispatch(SET_IS_LOGGED_IN(false));
     }
   };
-  // useEffect(() => {
-  //   checkLogInStatus();
+  useEffect(() => {
+    checkLogInStatus();
 
-  //   if (user) {
-  //     dispatch(SET_IS_LOGGED_IN(true));
-  //     navigate('/');
-  //   }
-  // }, [user]);
+    if (user) {
+      dispatch(SET_IS_LOGGED_IN(true));
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <MainStation onSubmit={handleSubmit}>

@@ -4,7 +4,7 @@ const initialState = {
   postsArrangeType: 'latest',
   posts: [],
   postsCounter: 0,
-  isLoggedIn: false
+  isLoggedIn: true
 };
 
 const newsFeed = createSlice({
