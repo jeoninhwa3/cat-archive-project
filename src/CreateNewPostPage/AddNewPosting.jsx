@@ -2,6 +2,8 @@ import { useState } from 'react';
 import supabase from '../supabaseClient';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { SET_POSTS, SET_POSTS_COUNTER } from '../redux/modules/newsFeed';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -90,12 +92,15 @@ const AddNewPosting = () => {
     setIsButtonDisabled(!(isTitleValid && isContentValid && isUrlValid));
   };
 
+  const dispatch = useDispatch();
   const addHandler = async () => {
     const session = await supabase.auth.getSession();
     await supabase.from('posts').insert({ title, content, url });
 
     console.log(session);
     alert('글 저장 완료');
+    dispatch(SET_POSTS([]));
+    dispatch(SET_POSTS_COUNTER(0));
     navigate('/');
   };
 
