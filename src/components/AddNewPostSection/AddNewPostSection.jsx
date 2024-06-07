@@ -10,7 +10,7 @@ const AddNewPostSection = () => {
           navigate('/createNewPost');
         }}
       >
-        <img src="src\assets\add_icon.png" style={{ height: '20px', opacity: '0.7' }} />
+        {/* <img src="src\assets\add_icon.png" style={{ height: '20px', opacity: '0.7' }} /> */}
         <AddNewPostText>새 고양이 등록하기</AddNewPostText>
       </AddNewPostBtn>
     </AddNewPostBtnContainer>
