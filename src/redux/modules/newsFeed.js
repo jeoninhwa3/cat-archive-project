@@ -1,17 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import supabase from '../../supabaseClient';
-
-const {
-  data: { user }
-} = await supabase.auth.getUser();
-// 접속한 사용자가 로그인상태라면 user가 잘 반환되고,
-// 로그인하지 않았다면 user가 잘 반환되지 않음
 
 const initialState = {
   postsArrangeType: 'latest',
   posts: [],
   postsCounter: 0,
-  isLoggedIn: user ? true : false
+  isLoggedIn: false
 };
 
 const newsFeed = createSlice({

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from '../../supabaseClient';
 import {
   Logo,
@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { SET_IS_LOGGED_IN } from '../../redux/modules/newsFeed';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ const Header = () => {
       navigate(`/myPage/${userId}`);
     }
   };
-  const dispatch = useDispatch();
+
   const signOutUser = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase.auth.signOut();

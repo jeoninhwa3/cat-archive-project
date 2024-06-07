@@ -55,12 +55,26 @@ function LoginPage() {
     }
   };
 
-  useEffect(() => {
+  const checkLogInStatus = async () => {
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
+    // 접속한 사용자가 로그인상태라면 user가 잘 반환되고,
+    // 로그인하지 않았다면 user가 잘 반환되지 않음
     if (user) {
       dispatch(SET_IS_LOGGED_IN(true));
-      navigate('/');
+    } else {
+      dispatch(SET_IS_LOGGED_IN(false));
     }
-  }, [user]);
+  };
+  // useEffect(() => {
+  //   checkLogInStatus();
+
+  //   if (user) {
+  //     dispatch(SET_IS_LOGGED_IN(true));
+  //     navigate('/');
+  //   }
+  // }, [user]);
 
   return (
     <MainStation onSubmit={handleSubmit}>
