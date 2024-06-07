@@ -49,6 +49,8 @@
 ### 개발환경
 
 - React
+- supabase
+  
 
 <br>
 
