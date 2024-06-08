@@ -116,6 +116,8 @@
 <img src= "https://github.com/hyejinleeee/B05/assets/161686758/ee8dc2f5-8c36-440b-aa06-cd95738c3a7f" width="680" height="350">
 
 ✨ 프로젝트 관련 파일
-    - 팀노션 : "https://teamsparta.notion.site/I-E-B05-0cf408c51da446fba36495f4cc4c2112" <br>
-    - 결과보고서 : "https://www.canva.com/design/DAGHUZZmSfw/XYZXAP_CBgLC2O5EvWvkzQ/view?utm_content=DA[…]re_your_design&utm_medium=link&utm_source=shareyourdesignpanel" <br>
+    - 팀노션 : "https://teamsparta.notion.site/I-E-B05-0cf408c51da446fba36495f4cc4c2112" 
+    <br>
+    - 결과보고서 : "https://www.canva.com/design/DAGHUZZmSfw/XYZXAP_CBgLC2O5EvWvkzQ/view?utm_content=DA[…]re_your_design&utm_medium=link&utm_source=shareyourdesignpanel" 
+    <br>
     - 시연영상 : "https://www.youtube.com/watch?v=lI1FX8ai33c"
