@@ -54,13 +54,9 @@
 - 윤기준 - 메인페이지
     - 메인 - 공통 레이아웃, 등록된 게시글 불러오기(R),
     - 무한스크롤 기능, 정렬 방식 선택 기능 / 발표, 전체적인 코드 오류 수정, 결과보고서 작성
-
-  
+ 
 
 <br>
-
-
-
 
 
 ## ✅ 필수구현사항
@@ -83,17 +79,17 @@
 
 | 작업 타입   | 작업내용                       |
 | ----------- | ------------------------------ |
-| ✨ update   | 해당 파일에 새로운 기능이 생김 |
-| 🎉 add      | 없던 파일을 생성함, 초기 세팅  |
-| 🐛 bugfix   | 버그 수정                      |
-| ♻️ refactor | 코드 리팩토링                  |
-| 🩹 fix      | 코드 수정                      |
-| 🚚 move     | 파일 옮김/정리                 |
-| 🔥 del      | 기능/파일을 삭제               |
-| 🍻 test     | 테스트 코드를 작성             |
-| 💄 style    | css                            |
-| 🙈 gitfix   | gitignore 수정                 |
-| 🔨script    | package.json 변경(npm 설치 등) |
+| ✨ Feat     | 해당 파일에 새로운 기능이 생김 |
+| 🎉 Add      | 없던 파일을 생성함, 초기 세팅  |
+| 🐛 Bugfix   | 버그 수정                      |
+| ♻️ Refactor | 코드 리팩토링                  |
+| 🩹 Fix      | 코드 수정                      |
+| 🚚 Move     | 파일 옮김/정리                 |
+| 🔥 Del      | 기능/파일을 삭제               |
+| 🍻 Test     | 테스트 코드를 작성             |
+| 💄 Style    | css                            |
+| 🙈 Gitfix   | gitignore 수정                 |
+| 🔨 Script   | package.json 변경(npm 설치 등) |
 
 <br>
 
@@ -118,3 +114,8 @@
 #### 6. 마이프로필/프로필 변경 및 수정삭제/ 게시물 수정삭제
 
 <img src= "https://github.com/hyejinleeee/B05/assets/161686758/ee8dc2f5-8c36-440b-aa06-cd95738c3a7f" width="680" height="350">
+
+✨ 프로젝트 관련 파일
+    - 팀노션 : "https://teamsparta.notion.site/I-E-B05-0cf408c51da446fba36495f4cc4c2112"
+    - 결과보고서 : "https://www.canva.com/design/DAGHUZZmSfw/XYZXAP_CBgLC2O5EvWvkzQ/view?utm_content=DA[…]re_your_design&utm_medium=link&utm_source=shareyourdesignpanel"
+    - 시연영상 : "https://www.youtube.com/watch?v=lI1FX8ai33c"
